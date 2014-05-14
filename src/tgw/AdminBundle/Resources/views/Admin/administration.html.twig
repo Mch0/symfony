@@ -1,0 +1,9 @@
+{% extends "tgwAdminBundle::theme.html.twig" %}
+
+{% block title %}tgwAdminBundle:Admin:index{% endblock %}
+
+    {% block content %}
+        <h1>Welcome dans la partie admin {{app.session.get('login')}}</h1>
+
+
+    {% endblock %}

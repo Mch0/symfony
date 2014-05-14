@@ -1,0 +1,20 @@
+index:
+    path:   /admin
+    defaults: { _controller: tgwAdminBundle:Admin:index }
+
+login:
+    path:   /admin/login
+    defaults: { _controller: tgwAdminBundle:Admin:login }
+
+create:
+    path:   /user/create
+    defaults: { _controller: tgwAdminBundle:User:create }
+
+dashboard:
+    path:   /admin/dashboard
+    defaults: { _controller: tgwAdminBundle:Admin:dashboard}
+
+articles:
+    path:   /admin/dashboard/articles
+    defaults: { _controller: tgwAdminBundle:Admin:articles}
+

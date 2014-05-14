@@ -1,0 +1,7 @@
+parameters:
+#    tgw_blog.example.class: tgw\BlogBundle\Example
+
+services:
+#    tgw_blog.example:
+#        class: %tgw_blog.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]

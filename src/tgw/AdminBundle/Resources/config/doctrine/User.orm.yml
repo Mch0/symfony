@@ -1,0 +1,25 @@
+tgw\AdminBundle\Entity\User:
+    type: entity
+    table: null
+    repositoryClass: tgw\AdminBundle\Entity\UserRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        login:
+            type: string
+            length: '100'
+        password:
+            type: string
+            length: '255'
+        role:
+            type: string
+            length: '255'
+        admin:
+            type: boolean
+        lastConnection:
+            type: datetime
+    lifecycleCallbacks: {  }

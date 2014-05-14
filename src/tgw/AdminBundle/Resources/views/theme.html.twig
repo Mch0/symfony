@@ -1,0 +1,13 @@
+<html>
+    <head>
+        <title>{{ titre }}</title>
+        <link rel="stylesheet" href="css/"
+    </head>
+    <body>
+    <div style="height: 50px;width: 900px;background-color: #313131;color: white;text-align: center">THEME GLOBAL ADMINISTRATION</div>
+    <div><a href="{{ path('articles') }}">Articles</a> | <a href="">Slider</a> | <a href="">Portfolio</a> </div>
+    {% block content %}
+
+    {% endblock %}
+    </body>
+</html>

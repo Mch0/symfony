@@ -1,0 +1,8 @@
+tgw_admin:
+    resource: "@tgwAdminBundle/Resources/config/routing.yml"
+    prefix:   /
+
+tgw_blog:
+    resource: "@tgwBlogBundle/Resources/config/routing.yml"
+    prefix:   /
+

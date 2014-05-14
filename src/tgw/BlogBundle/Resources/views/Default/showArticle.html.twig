@@ -1,0 +1,14 @@
+{%  extends "tgwBlogBundle::header.html.twig" %}
+
+
+{% block content %}
+
+
+       {{ article.getArticleTitre }}
+        </br>
+    </br>
+    {{ article.getArticleContenu }}
+    </br>
+    </br>
+    {{ article.getArticleAuteur }} |  {{ article.getArticleCategorie }}  | {{ article.getArticleDate|date('Y-m-d H:i:s') }}
+{% endblock %}

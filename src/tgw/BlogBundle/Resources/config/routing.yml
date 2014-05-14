@@ -1,0 +1,17 @@
+blog_articles:
+    path:    /articles/{page}
+    defaults: { _controller: tgwBlogBundle:Article:articles, page: 1 }
+    requirements:
+        page: \d+
+
+blog_article_show:
+    path:   /article/{id}
+    defaults: { _controller: tgwBlogBundle:Article:show }
+
+blog_home:
+    path:     /home
+    defaults: { _controller: tgwBlogBundle:Accueil:index }
+
+blog_test:
+    path:     /test
+    defaults: { _controller: tgwBlogBundle:Accueil:ajouter }
