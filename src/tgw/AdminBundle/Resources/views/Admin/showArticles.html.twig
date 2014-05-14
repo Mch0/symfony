@@ -5,7 +5,10 @@
 <h1>Welcome to les articles</h1>
 
     {% for article in articles %}
-        {{ article.getArticleTitre }} | <a href="path">voir</a> | <a>supprimer</a> | <a>éditer</a>
+        {{ article.getArticleTitre }}
+        | <a href="{{ path('blog_article_show', { 'id': article.getId }) }}">voir</a>
+        | <a href="{{ path('blog_article_remove', { 'id': article.getId }) }}">supprimer</a>
+        | <a>éditer</a>
         </br>
     {% endfor %}
 

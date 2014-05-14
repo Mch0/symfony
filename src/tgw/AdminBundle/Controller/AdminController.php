@@ -5,6 +5,7 @@ namespace tgw\AdminBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Session\Session;
+use Symfony\Component\Validator\Constraints\DateTime;
 
 class AdminController extends Controller
 {
@@ -31,6 +32,14 @@ class AdminController extends Controller
     {
     }
 
+
+    /**
+     * Traite le formulaire de connexion admin, ajoute la date et l'heure de connexion de l'utilisateur
+     * Redirige vers dashboard
+     *
+     * @param Request $request
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse
+     */
     public function loginAction(Request $request)
     {
 
@@ -39,7 +48,9 @@ class AdminController extends Controller
         $login = $request->request->get('login');
         $password = $request->request->get('password');
         $passwordMD5 = md5($password);
-        $user = $this->getDoctrine()->getRepository('tgwAdminBundle:User')->findOneBy(array('login' => $login));
+        $em = $this->getDoctrine()->getManager();
+        $user = $em->getRepository('tgwAdminBundle:User')->findOneBy(array('login' => $login));
+
         if($user == null || $user->getPassword() != $passwordMD5)
         {
             $session->set('popin',1);
@@ -51,7 +62,9 @@ class AdminController extends Controller
         $session->set('role',$user->getRole());
         $session->set('admin', $user->getAdmin());
         $session->set('popin',0);
-
+        $date = new \DateTime();
+        $user->setLastConnection($date);
+        $em->flush();
         return $this->redirect($this->generateUrl('dashboard'));
     }
 

@@ -36,8 +36,8 @@ class User
 
     /**
      * @var \DateTime
-     */
-    private $lastConnection;
+     *      */
+    private $lastConnection ;
 
 
     /**
