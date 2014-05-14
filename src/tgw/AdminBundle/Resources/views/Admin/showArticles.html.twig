@@ -4,5 +4,9 @@
 {% block content %}
 <h1>Welcome to les articles</h1>
 
+    {% for article in articles %}
+        {{ article.getArticleTitre }} | <a href="path">voir</a> | <a>supprimer</a> | <a>éditer</a>
+        </br>
+    {% endfor %}
 
 {% endblock %}

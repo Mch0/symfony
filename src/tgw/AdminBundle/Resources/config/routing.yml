@@ -18,3 +18,6 @@ articles:
     path:   /admin/dashboard/articles
     defaults: { _controller: tgwAdminBundle:Admin:articles}
 
+editer_article
+    path:   /admin/dashboard/articles/editer/{id}
+    defaults: { _controller: tgwBlogBundle:Article:editer}

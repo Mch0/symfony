@@ -22,7 +22,9 @@ class AdminController extends Controller
 
     public function articlesAction()
     {
-        return $this->render('tgwAdminBundle:Admin:showArticles.html.twig',array('titre'=>'Les articles'));
+
+        $lesArticles = $this->getDoctrine()->getRepository('tgwBlogBundle:Article')->findAll();
+        return $this->render('tgwAdminBundle:Admin:showArticles.html.twig',array('titre'=>'Les articles', 'articles'=>$lesArticles));
     }
 
     public function showArticlesAction()
