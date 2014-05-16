@@ -14,4 +14,4 @@ blog_home:
 
 blog_test:
     path:     /test
-    defaults: { _controller: tgwBlogBundle:Accueil:ajouter }
+    defaults: { _controller: tgwBlogBundle:Article:ajouter }
