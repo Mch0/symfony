@@ -22,4 +22,5 @@ tgw\AdminBundle\Entity\User:
             type: boolean
         lastConnection:
             type: datetime
+            nullable: TRUE
     lifecycleCallbacks: {  }

@@ -60,4 +60,14 @@ class ArticleController extends Controller
         return $this->render('tgwBlogBundle:Default:listeArticles.html.twig', array('titre' => "Les articles",
             'articles' => $lesArticles));
     }
+
+
+    public function supprimerAction($id)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $article = $em->getRepository('tgwBlogBundle:Article')->find($id);
+        //$em->remove($article);
+        //$em->flush();
+        return $this->redirect($this->generateUrl('dashboard'));
+    }
 }
