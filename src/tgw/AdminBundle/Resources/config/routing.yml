@@ -1,10 +1,6 @@
-index:
+tgw_admin_index:
     path:   /admin
     defaults: { _controller: tgwAdminBundle:Admin:index }
-
-login:
-    path:   /admin/login
-    defaults: { _controller: tgwAdminBundle:Admin:login }
 
 create:
     path:   /user/create
@@ -21,3 +17,9 @@ articles:
 editer_article:
     path:   /admin/dashboard/articles/editer/{id}
     defaults: { _controller: tgwBlogBundle:Article:editer}
+
+login_check:
+    pattern:   /login_check
+
+logout:
+    pattern:   /logout

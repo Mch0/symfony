@@ -11,14 +11,15 @@
         {% endif %}
         </br>
         </br>
-        <form method="POST" action="{{ path('login') }}">
+        <form method="POST" action="{{ path('login_check') }}">
 
             <label for="login" > LOGIN </label>
-            <input type="text" name="login" id="login" />
+            <input type="text" name="_username" id="login" />
             </br>
             <label for="password"> PASSWORD </label>
-            <input type="password" name="password" id="password">
+            <input type="password" name="_password" id="password">
             </br>
+            <input type="hidden" name="_target_path" value="account" />
             <input type="submit" value="Go!" />
         </form>
     {% endblock %}

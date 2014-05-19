@@ -5,19 +5,34 @@ namespace tgw\AdminBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Session\Session;
-use Symfony\Component\Validator\Constraints\DateTime;
-
+use Symfony\Component\Security\Core\SecurityContext;
 class AdminController extends Controller
 {
 
     public function indexAction()
     {
-        if(!isset($_SESSION['popin']))
-        {
-            $_SESSION['popin'] = 0;
+        //Si le visiteur est déjà identifié, on le redirige vers l'accueil
+        if ($this->get('security.context')->isGranted('IS_AUTHENTICATED_REMEMBERED')) {
+            return $this->redirect($this->generateUrl('dashboard'));
         }
-        return $this->render('tgwAdminBundle:Admin:index.html.twig', array('popin' => $_SESSION['popin'],
-                                                                            'titre' => 'Administration'));
+
+        $request = $this->getRequest();
+        $session = $request->getSession();
+
+        // On vérifie s'il y a des erreurs d'une précédente soumission du formulaire
+        if ($request->attributes->has(SecurityContext::AUTHENTICATION_ERROR)) {
+            $error = $request->attributes->get(SecurityContext::AUTHENTICATION_ERROR);
+        } else {
+            $error = $session->get(SecurityContext::AUTHENTICATION_ERROR);
+            $session->remove(SecurityContext::AUTHENTICATION_ERROR);
+        }
+
+        return $this->render('tgwAdminBundle:Admin:index.html.twig', array(
+            // Valeur du précédent nom d'utilisateur entré par l'internaute
+            'last_username' => $session->get(SecurityContext::LAST_USERNAME),
+            'error' => $error,
+            'titre' => "Administration"
+        ));
 
     }
 
@@ -25,7 +40,7 @@ class AdminController extends Controller
     {
 
         $lesArticles = $this->getDoctrine()->getRepository('tgwBlogBundle:Article')->findAll();
-        return $this->render('tgwAdminBundle:Admin:showArticles.html.twig',array('titre'=>'Les articles', 'articles'=>$lesArticles));
+        return $this->render('tgwAdminBundle:Admin:showArticles.html.twig', array('titre' => 'Les articles', 'articles' => $lesArticles));
     }
 
     public function showArticlesAction()
@@ -42,31 +57,9 @@ class AdminController extends Controller
      */
     public function loginAction(Request $request)
     {
-
-        $session = new Session();
-        $session->start();
-        $login = $request->request->get('login');
-        $password = $request->request->get('password');
-        $passwordMD5 = md5($password);
-        $em = $this->getDoctrine()->getManager();
-        $user = $em->getRepository('tgwAdminBundle:User')->findOneBy(array('login' => $login));
-
-        if($user == null || $user->getPassword() != $passwordMD5)
-        {
-            $session->set('popin',1);
-            return $this->redirect($this->generateUrl('index'));
-            //return $this->render('tgwAdminBundle:Admin:index.html.twig',array('titre' => 'Administration'));
-
-        }
-        $session->set('login',$login);
-        $session->set('role',$user->getRole());
-        $session->set('admin', $user->getAdmin());
-        $session->set('popin',0);
-        $date = new \DateTime();
-        $user->setLastConnection($date);
-        $em->flush();
-        return $this->redirect($this->generateUrl('dashboard'));
+        /****/
     }
+
 
     public function logoutAction()
     {

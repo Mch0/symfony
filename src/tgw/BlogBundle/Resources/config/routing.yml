@@ -14,12 +14,8 @@ blog_home:
 
 blog_test:
     path:     /test
-<<<<<<< HEAD
-    defaults: { _controller: tgwBlogBundle:Article:ajouter }
-=======
     defaults: { _controller: tgwBlogBundle:Article:ajouterArticle }
 
 blog_article_remove:
     path:     /admin/article/supprimer/{id}
     defaults: { _controller:tgwBlogBundle:Article:supprimer}
->>>>>>> 66df61d1defce11daa5db87ba4938a3200376891
