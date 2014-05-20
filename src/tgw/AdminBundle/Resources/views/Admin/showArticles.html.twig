@@ -3,12 +3,13 @@
 
 {% block content %}
 <h1>Welcome to les articles</h1>
-
+<a href="{{ path('tgw_admin_rediger') }}">Nouvel article</a>
+    </br>
     {% for article in articles %}
-        {{ article.getArticleTitre }}
+        {{ article.getArticleTitre }} | {{ article.getArticleAuteur }} | {{ article.getArticleDate|date("d/m/Y H:i:s") }}
         | <a href="{{ path('blog_article_show', { 'id': article.getId }) }}">voir</a>
-        | <a href="{{ path('blog_article_remove', { 'id': article.getId }) }}">supprimer</a>
-        | <a>éditer</a>
+        | <a href="{{ path('tgw_admin_supprimer_article', { 'id': article.getId }) }}">supprimer</a>
+        | <a href="{{ path('tgw_admin_editer_article', {'id': article.getId}) }}">éditer</a>
         </br>
     {% endfor %}
 

@@ -1,0 +1,41 @@
+{% extends "tgwAdminBundle::theme.html.twig" %}
+
+{% block content %}
+<h1>Création d'un nouvelle article</h1>
+
+
+<script src="{{ asset('bundles/tgw/js/ckeditor/ckeditor.js') }}" type="text/javascript"></script>
+{% if article != null %}
+<form action="{{ path('tgw_admin_update_article') }}" method="POST">
+    <label for="titre">Titre : </label><input type="text" name="titre" id="titre"
+                                              value="{{ article.getArticleTitre }}"/>
+    <br/>
+    <label for="auteur">Auteur : </label><input type="text" name="auteur" id="auteur"
+                                                value="{{ article.getArticleAuteur }}"/>
+    <br/>
+    <label for="categorie">Categorie : </label><input type="text" name="categorie" id="categorie"
+                                                      value="{{ article.getArticleCategorie }}">
+    <textarea id="contenuArticle" name="contenuArticle" style="width:700px;height:1000px" cols="100"
+              rows="700">{{ article.getArticleContenu }}</textarea>
+    <input type="hidden" value="{{ article.getId }}" name="id" id="id">
+    <input type="submit" value="Enregistrer"/>
+</form>
+
+
+    {% else %}
+<form action="{{ path('tgw_admin_creer_article') }}" method="POST">
+    <label for="titre">Titre : </label><input type="text" name="titre" id="titre" />
+    <br/>
+    <label for="auteur">Auteur : </label><input type="text" name="auteur" id="auteur"/>
+    <br/>
+    <label for="categorie">Categorie : </label><input type="text" name="categorie" id="categorie" />
+    <textarea id="contenuArticle" name="contenuArticle" style="width:700px;height:1000px" cols="100"rows="700"></textarea>
+    <input type="submit" value="Enregistrer"/>
+</form>
+{% endif %}
+<script type="text/javascript">
+    CKEDITOR.replace('contenuArticle');
+    CKEDITOR.config.width = '80%';
+    CKEDITOR.config.height = '50%';
+</script>
+{% endblock %}

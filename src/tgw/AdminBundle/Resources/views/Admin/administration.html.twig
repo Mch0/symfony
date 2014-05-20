@@ -2,7 +2,7 @@
 {% block title %}tgwAdminBundle:Admin:index{% endblock %}
     {% block user_block %}<a href="{{ path('/logout') }}">Logout</a>{% endblock %}
     {% block content %}
-        <h1>Welcome dans la partie admin {{app.session.get('login')}}</h1>
+        <h1>Welcome dans la partie admin {{user.getUsername}}</h1>
 
 
     {% endblock %}

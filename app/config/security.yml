@@ -1,7 +1,9 @@
 security:
     encoders:
-        Symfony\Component\Security\Core\User\User: plaintext
- 
+        Symfony\Component\Security\Core\User\User:
+                    algorithm:   md5
+                    iterations: 1
+                    encode_as_base64: false
     role_hierarchy:
         ROLE_ADMIN:       ROLE_ADMIN
  
@@ -9,7 +11,7 @@ security:
         in_memory:
             memory:
                 users:
-                    Mcho:  { password: 123456!, roles: [ 'ROLE_ADMIN' ] }
+                    Mcho:  { password: b7dfe9134c7a717a3b6eaf37bdc1ef7b , roles: [ 'ROLE_ADMIN' ] }
                     admin: { password: admin, roles: [ 'ROLE_ADMIN' ] }
 
     firewalls:          

@@ -6,6 +6,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Session\Session;
 use Symfony\Component\Security\Core\SecurityContext;
+use tgw\BlogBundle\Entity\Article;
 class AdminController extends Controller
 {
 
@@ -36,6 +37,43 @@ class AdminController extends Controller
 
     }
 
+
+
+
+    public function redigerAction()
+    {
+        return $this->render('tgwAdminBundle:Admin:redigerArticle.html.twig', array('titre' => 'Rediger un article','article' => null));
+    }
+
+
+    public function creerAction(Request $request)
+    {
+        $article = new Article();
+        $article->setArticleTitre($request->get('titre'));
+        $article->setArticleContenu($request->get('contenuArticle'));
+        $article->setArticleAuteur($request->get('auteur'));
+        $article->setArticleCategorie($request->get('categorie'));
+        $article->setArticleSynopsis("synopsys tout moisi ");
+        $article->setArticlePublie(false);
+        $article->setArticleDate(new \DateTime());
+        $DoctrineService = $this->getDoctrine()->getManager();
+
+        $DoctrineService->persist($article);
+        $DoctrineService->flush();
+
+        return $this->redirect($this->generateUrl('articles'));
+    }
+
+
+    public function supprimerAction($id)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $article = $em->getRepository('tgwBlogBundle:Article')->find($id);
+        $em->remove($article);
+        $em->flush();
+        return $this->redirect($this->generateUrl('articles'));
+    }
+
     public function articlesAction()
     {
 
@@ -43,22 +81,26 @@ class AdminController extends Controller
         return $this->render('tgwAdminBundle:Admin:showArticles.html.twig', array('titre' => 'Les articles', 'articles' => $lesArticles));
     }
 
-    public function showArticlesAction()
+   public function editerAction($id)
+   {
+        $em = $this->getDoctrine()->getManager();
+        $article = $em->getRepository('tgwBlogBundle:Article')->find($id);
+        return $this->render('tgwAdminBundle:Admin:redigerArticle.html.twig', array('titre' => 'Les articles', 'article' => $article));
+   }
+
+    public function updateAction(Request $request)
     {
+        $em = $this->getDoctrine()->getManager();
+        $article = $em->getRepository('tgwBlogBundle:Article')->find($request->get('id'));
+        $article->setArticleTitre($request->get('titre'));
+        $article->setArticleAuteur($request->get('auteur'));
+        $article->setArticleCategorie($request->get('categorie'));
+        $article->setArticleContenu($request->get('contenuArticle'));
+        $em->flush();
+
+        return $this->redirect($this->generateUrl('articles'));
     }
 
-
-    /**
-     * Traite le formulaire de connexion admin, ajoute la date et l'heure de connexion de l'utilisateur
-     * Redirige vers dashboard
-     *
-     * @param Request $request
-     * @return \Symfony\Component\HttpFoundation\RedirectResponse
-     */
-    public function loginAction(Request $request)
-    {
-        /****/
-    }
 
 
     public function logoutAction()
@@ -68,8 +110,8 @@ class AdminController extends Controller
 
     public function dashboardAction()
     {
-
-        return $this->render('tgwAdminBundle:Admin:administration.html.twig', array('titre' => 'Dashboard'));
+        return $this->render('tgwAdminBundle:Admin:administration.html.twig', array('titre' => 'Dashboard',
+                                                                                     'user' => $this->getUser()));
     }
 
 }

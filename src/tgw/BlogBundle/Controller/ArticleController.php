@@ -21,7 +21,7 @@ class ArticleController extends Controller
         $article->setArticleAuteur("Arnaud");
         $article->setArticleCategorie("Une categorie");
         $article->setArticleContenu("Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque luctus pulvinar est. Integer rhoncus nunc elit, non rutrum velit sagittis in. Sed adipiscing, diam lacinia rhoncus vestibulum, magna turpis iaculis arcu, at varius tortor lorem eget ante. Aenean ipsum lorem, ultrices ac enim nec, laoreet bibendum turpis. Sed in malesuada tortor. Etiam non nunc ac mi suscipit luctus eget id ligula. Nullam dignissim metus id dictum pretium. Curabitur eu eleifend nulla. Nunc at ligula id massa convallis tempus. Donec luctus, felis in tempor eleifend, massa turpis posuere magna, a ultrices mauris tellus a ante. Morbi dictum ornare turpis in hendrerit. Nam vestibulum cursus interdum. Vivamus elit neque, malesuada eget cursus fermentum, sodales id massa. Phasellus congue porta nunc, quis pharetra felis convallis ut. Curabitur ac neque vitae diam blandit rhoncus. Phasellus malesuada massa sapien, in malesuada tellus placerat eu.");
-        $article->setArticlePublie(false);
+        $article->setArticlePublie(true);
         $article->setArticleSynopsis("consectetur adipiscing elit. Quisque luctus pulvinar est.");
 
         $DoctrineService = $this->getDoctrine()->getManager();
@@ -62,12 +62,5 @@ class ArticleController extends Controller
     }
 
 
-    public function supprimerAction($id)
-    {
-        $em = $this->getDoctrine()->getManager();
-        $article = $em->getRepository('tgwBlogBundle:Article')->find($id);
-        //$em->remove($article);
-        //$em->flush();
-        return $this->redirect($this->generateUrl('dashboard'));
-    }
+
 }
