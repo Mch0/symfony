@@ -1,7 +1,9 @@
 tgw_admin_index:
     path:   /admin
     defaults: { _controller: tgwAdminBundle:Admin:index }
-
+tgw_admin_rediger:
+    path: /admin/dashboard/article/rediger
+    defaults: { _controller: tgwAdminBundle:Admin:rediger }
 create:
     path:   /user/create
     defaults: { _controller: tgwAdminBundle:User:create }
@@ -14,9 +16,23 @@ articles:
     path:   /admin/dashboard/articles
     defaults: { _controller: tgwAdminBundle:Admin:articles}
 
-editer_article:
-    path:   /admin/dashboard/articles/editer/{id}
-    defaults: { _controller: tgwBlogBundle:Article:editer}
+tgw_admin_creer_article:
+    path:   /admin/dashboard/article/creer
+    defaults: { _controller: tgwAdminBundle:Admin:creer}
+
+tgw_admin_supprimer_article:
+    path:   /admin/dashboard/article/supprimer/{id}
+    defaults: { _controller: tgwAdminBundle:Admin:supprimer }
+
+tgw_admin_editer_article:
+    path:   /admin/dashboard/article/editer/{id}
+    defaults: { _controller: tgwAdminBundle:Admin:editer}
+
+tgw_admin_update_article:
+    path:   /admin/dashboard/article/edition
+    defaults: { _controller: tgwAdminBundle:Admin:update}
+
+
 
 login_check:
     pattern:   /login_check
