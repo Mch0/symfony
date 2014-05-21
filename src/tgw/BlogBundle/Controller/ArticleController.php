@@ -41,7 +41,7 @@ class ArticleController extends Controller
 
         $DoctrineService = $this->getDoctrine()->getManager();
         $article = $DoctrineService->getRepository('tgwBlogBundle:Article')->find($id);
-        return $this->render('tgwBlogBundle:Default:showArticle.html.twig' , array('titre' => $article->getArticleTitre(),
+        return $this->render('tgwBlogBundle:Default:showArticle.html.twig' , array('titre' => $this->get('translator')->trans('blog.voir.article',array('%titre%' => $article->getArticleTitre())),
                                                                             'article' => $article ));
     }
 

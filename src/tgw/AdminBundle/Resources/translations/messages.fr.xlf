@@ -3,7 +3,7 @@
     <file source-language="en" datatype="plaintext" original="file.ext">
         <body>
             <trans-unit id="1">
-                            <source>Administration</source>
+                            <source>admin.acceuil</source>
                             <target>Administration</target>
                         </trans-unit>
                         <trans-unit id="2">
@@ -15,12 +15,12 @@
                             <target>Administration - les articles</target>
                         </trans-unit>
                         <trans-unit id="4">
-                            <source>Administration - rédiger un article</source>
-                            <target>Administration - writing an article</target>
+                            <source>admin.rediger</source>
+                            <target>Administration - rédiger article</target>
                         </trans-unit>
                         <trans-unit id="5">
-                            <source>Administration - editer un article</source>
-                            <target>Administration - edit an article</target>
+                            <source>admin.editer</source>
+                            <target>Administration - éditer un article</target>
                         </trans-unit>
         </body>
     </file>

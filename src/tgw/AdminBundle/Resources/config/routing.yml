@@ -31,8 +31,13 @@ tgw_admin_editer_article:
 tgw_admin_update_article:
     path:   /admin/dashboard/article/edition
     defaults: { _controller: tgwAdminBundle:Admin:update}
+tgw_admin_publier_article:
+    path:   /admin/dashboard/article/publie
+    defaults: { _controller: tgwAdminBundle:Admin:publie}
 
-
+tgw_admin_depublier_article:
+    path:   /admin/dashboard/article/depublie
+    defaults: { _controller: tgwAdminBundle:Admin:depublie}
 
 login_check:
     pattern:   /login_check

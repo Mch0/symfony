@@ -42,7 +42,7 @@ class AdminController extends Controller
 
     public function redigerAction()
     {
-        return $this->render('tgwAdminBundle:Admin:redigerArticle.html.twig', array('titre' => 'Rediger un article','article' => null));
+        return $this->render('tgwAdminBundle:Admin:redigerArticle.html.twig', array('titre' => $this->get("translator")->trans("admin.rediger"),'article' => null));
     }
 
 
@@ -78,14 +78,14 @@ class AdminController extends Controller
     {
 
         $lesArticles = $this->getDoctrine()->getRepository('tgwBlogBundle:Article')->findAll();
-        return $this->render('tgwAdminBundle:Admin:showArticles.html.twig', array('titre' => 'Les articles', 'articles' => $lesArticles));
+        return $this->render('tgwAdminBundle:Admin:showArticles.html.twig', array('titre' => $this->get("translator")->trans("admin.articles"), 'articles' => $lesArticles));
     }
 
    public function editerAction($id)
    {
         $em = $this->getDoctrine()->getManager();
         $article = $em->getRepository('tgwBlogBundle:Article')->find($id);
-        return $this->render('tgwAdminBundle:Admin:redigerArticle.html.twig', array('titre' => 'Les articles', 'article' => $article));
+        return $this->render('tgwAdminBundle:Admin:redigerArticle.html.twig', array('titre' => $this->get("translator")->trans("admin.editer"), 'article' => $article));
    }
 
     public function updateAction(Request $request)
@@ -112,6 +112,25 @@ class AdminController extends Controller
     {
         return $this->render('tgwAdminBundle:Admin:administration.html.twig', array('titre' => $this->get("translator")->trans("admin.dashboard"),
                                                                                      'user' => $this->getUser()));
+    }
+
+
+    public function publieAction(Request $request)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $article = $em->getRepository('tgwBlogBundle:Article')->find($request->get('id'));
+        $article->setArticlePublie(1);
+        $em->flush();
+        return $this->redirect($this->generateUrl('articles'));
+    }
+
+    public function depublieAction(Request $request)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $article = $em->getRepository('tgwBlogBundle:Article')->find($request->get('id'));
+        $article->setArticlePublie(0);
+        $em->flush();
+        return $this->redirect($this->generateUrl('articles'));
     }
 
 }
