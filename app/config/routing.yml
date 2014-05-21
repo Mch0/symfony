@@ -1,3 +1,5 @@
+
+
 tgw_admin:
     resource: "@tgwAdminBundle/Resources/config/routing.yml"
     prefix:   /
