@@ -32,7 +32,7 @@ class AdminController extends Controller
             // Valeur du précédent nom d'utilisateur entré par l'internaute
             'last_username' => $session->get(SecurityContext::LAST_USERNAME),
             'error' => $error,
-            'titre' => "Administration"
+            'titre' => $this->get("translator")->trans("admin.articles")
         ));
 
     }
@@ -110,7 +110,7 @@ class AdminController extends Controller
 
     public function dashboardAction()
     {
-        return $this->render('tgwAdminBundle:Admin:administration.html.twig', array('titre' => 'Dashboard',
+        return $this->render('tgwAdminBundle:Admin:administration.html.twig', array('titre' => $this->get("translator")->trans("admin.dashboard"),
                                                                                      'user' => $this->getUser()));
     }
 

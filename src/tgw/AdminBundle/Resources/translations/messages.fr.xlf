@@ -3,9 +3,25 @@
     <file source-language="en" datatype="plaintext" original="file.ext">
         <body>
             <trans-unit id="1">
-                <source>Symfony2 is great</source>
-                <target>J'aime Symfony2</target>
-            </trans-unit>
+                            <source>Administration</source>
+                            <target>Administration</target>
+                        </trans-unit>
+                        <trans-unit id="2">
+                            <source>admin.dashboard</source>
+                            <target>Dashboard</target>
+                        </trans-unit>
+                        <trans-unit id="3">
+                            <source>admin.articles</source>
+                            <target>Administration - les articles</target>
+                        </trans-unit>
+                        <trans-unit id="4">
+                            <source>Administration - rédiger un article</source>
+                            <target>Administration - writing an article</target>
+                        </trans-unit>
+                        <trans-unit id="5">
+                            <source>Administration - editer un article</source>
+                            <target>Administration - edit an article</target>
+                        </trans-unit>
         </body>
     </file>
 </xliff>
