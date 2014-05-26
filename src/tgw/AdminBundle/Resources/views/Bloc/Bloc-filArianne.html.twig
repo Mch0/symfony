@@ -1,3 +1,9 @@
-{% for url in filArianne  %}
-{{ url }} /
-{% endfor %}
+
+    <div class="col-lg-10">
+        <ol class="breadcrumb">
+            {% for url in filArianne  %}
+                <li>{{ url }}</li>
+            {% endfor %}
+        </ol>
+    </div>
+
