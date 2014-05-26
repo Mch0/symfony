@@ -9,12 +9,16 @@
     </head>
     <body>
 
+        {% if app.user %}
+            {% include "tgwAdminBundle:Bloc:Bloc-logout.html.twig"  %}
+            {% include "tgwAdminBundle:Bloc:Bloc-navbar.html.twig" %}
+            {%  include "tgwAdminBundle:Bloc:Bloc-filArianne.html.twig" %}
+        {% endif %}
     {% block content %}
 
 
 
-            {% include "tgwAdminBundle:Bloc:Bloc-navbar.html.twig" %}
-            {%  include "tgwAdminBundle:Bloc:Bloc-filArianne.html.twig" %}
+
 
 
     {% endblock %}
