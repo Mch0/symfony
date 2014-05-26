@@ -1,0 +1,80 @@
+body{
+    background: url("image/wood.jpg");
+    color: #EEDDC9!important;
+}
+
+
+/* Formulaire de connexion */
+.lock-closed-icon, .dashboard-icon {
+    padding-bottom: 0.6%;
+}
+
+.form-connexion{
+    margin-top : 15%;
+    color: #EEDDC9;
+}
+
+.form-connexion .form-control{
+    background: transparent!important;
+}
+
+/* Fin Formulaire de connexion*/
+
+/* Dashboard */
+
+/* make sidebar nav vertical */
+
+
+@media (min-width: 768px) {
+    .sidebar-nav .navbar .navbar-collapse {
+        background-color: #262626;
+        padding: 0;
+        max-height: none;
+    }
+    .sidebar-nav .navbar ul {
+        float: none;
+        display: block;
+    }
+    .sidebar-nav .navbar li {
+        float: none;
+        display: block;
+    }
+    .sidebar-nav .navbar li a {
+        padding-top: 12px;
+        padding-bottom: 12px;
+    }
+    .navbar-default{
+        background-color: black;
+        border: none!important;
+        color : white;
+    }
+    #sidebar
+    {
+        min-height: 100%;
+        background-color: #262626!important;
+        bottom: 0;
+
+    }
+    .navbar-default .navbar-nav>li>a{
+        color:white!important;
+        width: 100%;
+    }
+    .navbar-default .navbar-nav>li:hover{
+        background-color: #333333;
+        font-weight: bold;
+    }
+}
+
+/* Fin Dashboard*/
+
+/* Header */
+.logout-link:link
+{
+text-decoration: none;
+}
+.logout-link
+{
+    color: white;
+    margin-top: 10px;
+}
+/* Fin header */
