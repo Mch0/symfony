@@ -1,8 +1,18 @@
 {% extends "tgwAdminBundle::theme.html.twig" %}
+
 {% block title %}tgwAdminBundle:Admin:index{% endblock %}
-    {% block user_block %}<a href="{{ path('/logout') }}">Logout</a>{% endblock %}
+
     {% block content %}
-        <h1>Welcome dans la partie admin {{user.getUsername}}</h1>
-
-
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-12" style="height: 50px;background-color: #000000">{% include "tgwAdminBundle:Bloc:Bloc-logout.html.twig"  %}</div>
+            </div>
+            <div class="row">
+            {% include "tgwAdminBundle:Bloc:Bloc-navbar.html.twig" %}
+            {%  include "tgwAdminBundle:Bloc:Bloc-filArianne.html.twig" %}
+             <div class="col-lg-10">
+                <h1><img src="{{ asset('bundles/tgw/image/icons/dashboard.png') }}" class="dashboard-icon" /> Dashboard</h1>
+             </div>
+            </div>
+        </div>
     {% endblock %}

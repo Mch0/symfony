@@ -14,14 +14,6 @@
                 <source>blog.voir.article</source>
                 <target>Blog - %titre% </target>
                 </trans-unit>
-            <trans-unit id="4">
-                <source>Administration - rédiger un article</source>
-                <target>Administration - writing an article</target>
-            </trans-unit>
-            <trans-unit id="5">
-                <source>Administration - editer un article</source>
-                <target>Administration - edit an article</target>
-            </trans-unit>
         </body>
     </file>
 </xliff>

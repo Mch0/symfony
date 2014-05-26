@@ -1,17 +1,21 @@
 <html>
     <head>
         <title>{{ titre }}</title>
-        <link rel="stylesheet" href="css/"
-        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js" type="text/javascript"/>
-        <link rel="icon" type="image/x-icon" href="{{ asset('bundles/tgw/image/favicon.ico') }}" />
+
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js" type="text/javascript"></script>
+        <link rel="icon" type="image/x-icon" href="{{ asset('bundles/tgw/image/icons/dashboard.png') }}" />
+        <link rel="stylesheet" href="{{ asset('bundles/tgw/css/admin.css') }}" />
+        <link rel="stylesheet" href="{{ asset('bundles/tgw/css/bootstrap.min.css') }}" />
     </head>
     <body>
-    <div style="height: 50px;width: 900px;background-color: #313131;color: white;text-align: center">THEME GLOBAL ADMINISTRATION</div>
-    <div><a href="{{ path('dashboard') }}">Dashboard</a>|<a href="{{ path('articles') }}">Articles</a> | <a href="">Slider</a> | <a href="">Portfolio</a> </div>
-    {% if app.user %}
-    <a href="{{ path('logout') }}">Logout</a>
-    {% endif %}
+
     {% block content %}
+
+
+
+            {% include "tgwAdminBundle:Bloc:Bloc-navbar.html.twig" %}
+            {%  include "tgwAdminBundle:Bloc:Bloc-filArianne.html.twig" %}
+
 
     {% endblock %}
     </body>

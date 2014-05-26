@@ -27,12 +27,13 @@ class AdminController extends Controller
             $error = $session->get(SecurityContext::AUTHENTICATION_ERROR);
             $session->remove(SecurityContext::AUTHENTICATION_ERROR);
         }
-
+        $filArianne = $this->formatArianne($this->getRequest()->getRequestUri());
         return $this->render('tgwAdminBundle:Admin:index.html.twig', array(
             // Valeur du précédent nom d'utilisateur entré par l'internaute
             'last_username' => $session->get(SecurityContext::LAST_USERNAME),
             'error' => $error,
-            'titre' => $this->get("translator")->trans("admin.articles")
+            'titre' => $this->get("translator")->trans("admin.articles"),
+            'filArianne' => $filArianne
         ));
 
     }
@@ -42,7 +43,10 @@ class AdminController extends Controller
 
     public function redigerAction()
     {
-        return $this->render('tgwAdminBundle:Admin:redigerArticle.html.twig', array('titre' => $this->get("translator")->trans("admin.rediger"),'article' => null));
+        $filArianne = $this->formatArianne($this->getRequest()->getRequestUri());
+        return $this->render('tgwAdminBundle:Admin:redigerArticle.html.twig', array('titre' => $this->get("translator")->trans("admin.rediger"),
+                                                                                    'article' => null,
+                                                                                        'filArianne' => $filArianne));
     }
 
 
@@ -76,16 +80,21 @@ class AdminController extends Controller
 
     public function articlesAction()
     {
-
+        $filArianne = $this->formatArianne($this->getRequest()->getRequestUri());
         $lesArticles = $this->getDoctrine()->getRepository('tgwBlogBundle:Article')->findAll();
-        return $this->render('tgwAdminBundle:Admin:showArticles.html.twig', array('titre' => $this->get("translator")->trans("admin.articles"), 'articles' => $lesArticles));
+        return $this->render('tgwAdminBundle:Admin:showArticles.html.twig', array('titre' => $this->get("translator")->trans("admin.articles"),
+                                                                                    'articles' => $lesArticles,
+                                                                                        'filArianne'=>$filArianne));
     }
 
    public function editerAction($id)
    {
+       $filArianne = $this->formatArianne($this->getRequest()->getRequestUri());
         $em = $this->getDoctrine()->getManager();
         $article = $em->getRepository('tgwBlogBundle:Article')->find($id);
-        return $this->render('tgwAdminBundle:Admin:redigerArticle.html.twig', array('titre' => $this->get("translator")->trans("admin.editer"), 'article' => $article));
+        return $this->render('tgwAdminBundle:Admin:redigerArticle.html.twig', array('titre' => $this->get("translator")->trans("admin.editer"),
+                                                                                        'article' => $article,
+                                                                                            'filArianne' => $filArianne));
    }
 
     public function updateAction(Request $request)
@@ -108,10 +117,29 @@ class AdminController extends Controller
 
     }
 
+
+    public function formatArianne($uri)
+    {
+        $tabUri = array();
+        $tabUri = explode('/',$uri);
+        $formatedUri= array();
+
+        for($i=2; $i < count($tabUri) ; $i++)
+        {
+
+            $formatedUri[$i-1] = $tabUri[$i] ;
+        }
+
+        return $formatedUri;
+    }
     public function dashboardAction()
     {
+
+        $filArianne = $this->formatArianne($this->getRequest()->getRequestUri());
+
         return $this->render('tgwAdminBundle:Admin:administration.html.twig', array('titre' => $this->get("translator")->trans("admin.dashboard"),
-                                                                                     'user' => $this->getUser()));
+                                                                                     'user' => $this->getUser(),
+                                                                                        'filArianne' => $filArianne ));
     }
 
 

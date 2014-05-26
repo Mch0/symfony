@@ -1,3 +1,3 @@
 {% if app.user %}
-{% block user_block %}<a href="{{ path('logout') }}">Déconnexion</a>{% endblock %}
+{% block user_block %}<a href="{{ path('logout') }}"  class="pull-right logout-link">Déconnexion</a>{% endblock %}
 {% endif %}
