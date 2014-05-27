@@ -6,68 +6,46 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * Article
- *
- * @ORM\Table()
- * @ORM\Entity(repositoryClass="tgw\BlogBundle\Entity\ArticleRepository")
  */
 class Article
 {
     /**
      * @var integer
-     *
-     * @ORM\Column(name="id", type="integer")
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
 
-
     /**
      * @var string
-     *
-     * @ORM\Column(name="article_titre", type="string", length=255)
      */
     private $articleTitre;
 
     /**
      * @var \DateTime
-     *
-     * @ORM\Column(name="article_date", type="datetime")
      */
     private $articleDate;
 
     /**
      * @var string
-     *
-     * @ORM\Column(name="article_synopsis", type="string", length=255)
      */
     private $articleSynopsis;
 
     /**
      * @var string
-     *
-     * @ORM\Column(name="article_contenu", type="text")
      */
     private $articleContenu;
 
     /**
      * @var string
-     *
-     * @ORM\Column(name="article_auteur", type="string", length=100)
      */
     private $articleAuteur;
 
     /**
      * @var boolean
-     *
-     * @ORM\Column(name="article_publie", type="boolean")
      */
     private $articlePublie;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="article_categorie", type="string", length=150)
+     * @var \stdClass
      */
     private $articleCategorie;
 
@@ -223,7 +201,7 @@ class Article
     /**
      * Set articleCategorie
      *
-     * @param string $articleCategorie
+     * @param \stdClass $articleCategorie
      * @return Article
      */
     public function setArticleCategorie($articleCategorie)
@@ -236,7 +214,7 @@ class Article
     /**
      * Get articleCategorie
      *
-     * @return string 
+     * @return \stdClass 
      */
     public function getArticleCategorie()
     {

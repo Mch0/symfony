@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="tgw\BlogBundle\Entity\Article">
+    <id name="id" type="integer" column="id">
+      <generator strategy="AUTO"/>
+    </id>
+    <field name="articleTitre" type="string" column="article_titre" length="255"/>
+    <field name="articleDate" type="datetime" column="article_date"/>
+    <field name="articleSynopsis" type="string" column="article_synopsis" length="255"/>
+    <field name="articleContenu" type="text" column="article_contenu"/>
+    <field name="articleAuteur" type="string" column="article_auteur" length="100"/>
+    <field name="articlePublie" type="boolean" column="article_publie"/>
+    <field name="articleCategorie" type="object" column="article_categorie"/>
+  </entity>
+</doctrine-mapping>

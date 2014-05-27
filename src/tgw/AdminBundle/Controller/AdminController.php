@@ -7,6 +7,8 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Session\Session;
 use Symfony\Component\Security\Core\SecurityContext;
 use tgw\BlogBundle\Entity\Article;
+use tgw\BlogBundle\Entity\Categorie;
+
 class AdminController extends Controller
 {
 
@@ -43,23 +45,33 @@ class AdminController extends Controller
 
     public function redigerAction()
     {
+        $em = $this->getDoctrine()->getManager();
         $filArianne = $this->formatArianne($this->getRequest()->getRequestUri());
+        $categories = $em->getRepository('tgwBlogBundle:Categorie')->findAll();
         return $this->render('tgwAdminBundle:Admin:redigerArticle.html.twig', array('titre' => $this->get("translator")->trans("admin.rediger"),
                                                                                     'article' => null,
-                                                                                        'filArianne' => $filArianne));
+                                                                                    'filArianne' => $filArianne,
+                                                                                    'categories' => $categories));
     }
 
 
     public function creerAction(Request $request)
     {
+        $em = $this->getDoctrine()->getManager();
         $article = new Article();
+        $categorie = new Categorie();
+        $cate = $em->getRepository('tgwBlogBundle:Categorie')->findBy(array('id'=>$request->get('categorie')));
+        $categorie->setTitre($cate[0]->getTitre());
+        $categorie->setId($cate[0]->getId());
         $article->setArticleTitre($request->get('titre'));
         $article->setArticleContenu($request->get('contenuArticle'));
         $article->setArticleAuteur($request->get('auteur'));
-        $article->setArticleCategorie($request->get('categorie'));
+       // $article->setArticleCategorie($request->get('categorie'));
         $article->setArticleSynopsis("synopsys tout moisi ");
         $article->setArticlePublie(false);
         $article->setArticleDate(new \DateTime());
+        $article->setArticleCategorie($categorie);
+
         $DoctrineService = $this->getDoctrine()->getManager();
 
         $DoctrineService->persist($article);
@@ -132,14 +144,24 @@ class AdminController extends Controller
 
         return $formatedUri;
     }
+
     public function dashboardAction()
     {
 
         $filArianne = $this->formatArianne($this->getRequest()->getRequestUri());
+        $em = $this->getDoctrine()->getManager();
+        $nbrTotalArticle = count($em->getRepository('tgwBlogBundle:Article')->findAll());
+        $nbrArticlePublie = count($em->getRepository('tgwBlogBundle:Article')->findBy(array('articlePublie' => 1)));
+        $nbrCategories = 10;
+        $nbrArticleNonPublie = count($em->getRepository('tgwBlogBundle:Article')->findBy(array('articlePublie' => 0)));
 
         return $this->render('tgwAdminBundle:Admin:administration.html.twig', array('titre' => $this->get("translator")->trans("admin.dashboard"),
                                                                                      'user' => $this->getUser(),
-                                                                                        'filArianne' => $filArianne ));
+                                                                                        'filArianne' => $filArianne,
+                                                                                        'nbrTotalArticle' => $nbrTotalArticle,
+                                                                                        'nbrArticlePublie' => $nbrArticlePublie,
+                                                                                        'nbrCategories' => $nbrCategories,
+                                                                                        'nbrArticleNonPublie' =>$nbrArticleNonPublie));
     }
 
 

@@ -65,6 +65,68 @@ body{
     }
 }
 
+
+.title
+{
+    height: 35px;
+    background-color:#333333;
+    width: 100%
+}
+#right-box table
+{
+    color: #5d5d5d!important;
+    font-size: 16px;
+}
+
+#right-box table em
+{
+    font-size:12px;
+}
+
+#right-box table tr:hover
+{
+    border-top: solid 3px;
+}
+
+#right-box table thead
+{
+    font-size : 12px;
+}
+#left-box, #right-box
+{
+    border:solid #333333 2px;
+    padding-left: 0;
+    padding-right: 0;
+    background-color:white;
+    overflow: auto;
+}
+.shorcut:hover
+{
+    background-color: #737373;
+    text-decoration: none;
+    color : floralwhite;
+}
+.shorcut
+{
+    display: inline-block;
+    border:1px solid #696969;
+    text-decoration: none;text-align: center;
+    padding : 10px 5px;
+    font-size: 12px;
+    color: #808080;
+    margin-top: 15px;
+    margin-bottom: 15px;
+
+}
+
+
+.shorcut img
+{
+    display: block;
+    margin: 0 auto 10px;
+    max-height: 48px;
+    max-width: 48px;
+}
 /* Fin Dashboard*/
 
 /* Header */
@@ -87,3 +149,9 @@ text-decoration: none;
 
 
 /* Fin fil d'ariane*/
+
+/* Fomulaire redaction article */
+
+form{
+    color:black ;
+}

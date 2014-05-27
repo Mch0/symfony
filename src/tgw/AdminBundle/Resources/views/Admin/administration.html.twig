@@ -9,15 +9,83 @@
                     <h1><img src="{{ asset('bundles/tgw/image/icons/dashboard.png') }}" class="dashboard-icon" /> Dashboard</h1>
                  </div>
                 <div class="col-lg-10">
-                   <div style="border:solid #333333 2px;height: 100px;padding-left: 0;padding-right: 0;background-color:white" class="col-lg-5">
-                        <div  class="col-lg-12" style="height: 35px;background-color:#333333;width: 100% ">Dashboard</div>
-                       <div class="shortcut"><a ><img src="{{ asset('bundles/tgw/image/icons/MacOs/TextEdit/48.png') }}" alt="Rédiger un nouvel article"/>
-                               </br>Rédiger un article
+                   <div id="left-box" class="col-lg-5">
+                        <div  class="col-lg-12 title">Dashboard</div>
+                       <div class="col-lg-12">
+                           <div class="col-lg-3">
+                               <a href="{{ path('tgw_admin_rediger') }}" class="shorcut">
+                                   <img src="{{ asset('bundles/tgw/image/icons/MacOs/TextEdit/48.png') }}" width="48" height="48" alt="Rédiger un nouvel article"/>
+                                   Rédiger un article
+                                </a>
+                           </div>
+                           <div class="col-lg-3">
+                               <a href="#" class="shorcut">
+                                   <img src="{{ asset('bundles/tgw/image/icons/MacOs/iPhoto/48.png') }}" width="48" height="48" alt="Gérer le slider"/>
+                                   Gérer le slider
                                </a>
+                           </div>
                        </div>
                     </div>
-                    <div style="border:solid #333333 2px;height: 100px;padding-left: 0;padding-right: 0;background-color:white" class="col-lg-5 col-lg-offset-1">
-                        <div  class="col-lg-12" style="height: 35px;background-color:#333333;width: 100% ">Contenu</div>
+                    <div id="right-box" class="col-lg-5 col-lg-offset-1">
+                        <div  class="col-lg-12 title">Contenu</div>
+                        <div class="col-lg-6">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th colspan="2">
+                                            <em>Contenu</em>
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            <strong>{{ nbrTotalArticle }}</strong>
+                                        </td>
+                                        <td>
+                                            <em>Articles</em>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <strong>{{ nbrArticlePublie }}</strong>
+                                        </td>
+                                        <td>
+                                            <em>Publiés</em>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <strong>{{ nbrCategories }}</strong>
+                                        </td>
+                                        <td>
+                                            <em>Catégories</em>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="col-lg-6">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th colspan="2">
+                                            Actions
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                           <strong>{{ nbrArticleNonPublie }}</strong>
+                                        </td>
+                                        <td>
+                                           <em class="alert-danger">Article en attente de publication</em>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                 </div>
              </div>

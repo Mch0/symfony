@@ -10,5 +10,5 @@
     {{ article.getArticleContenu|raw }}
     </br>
     </br>
-    {{ article.getArticleAuteur }} |  {{ article.getArticleCategorie }}  | {{ article.getArticleDate|date('Y-m-d H:i:s') }}
+    {{ article.getArticleAuteur }} |  {{ article.getArticleCategorie.getTitre }}  | {{ article.getArticleDate|date('Y-m-d H:i:s') }}
 {% endblock %}
