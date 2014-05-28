@@ -160,7 +160,7 @@ class AdminController extends Controller
         $nbrArticlePublie = count($em->getRepository('tgwBlogBundle:Article')->findBy(array('articlePublie' => 1)));
         $nbrCategories = 10;
         $nbrArticleNonPublie = count($em->getRepository('tgwBlogBundle:Article')->findBy(array('articlePublie' => 0)));
-
+        $nbrCategories = count($em->getRepository('tgwBlogBundle:Categorie')->findAll());
         return $this->render('tgwAdminBundle:Admin:administration.html.twig', array('titre' => $this->get("translator")->trans("admin.dashboard"),
                                                                                      'user' => $this->getUser(),
                                                                                         'filArianne' => $filArianne,
