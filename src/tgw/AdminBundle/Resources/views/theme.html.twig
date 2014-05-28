@@ -9,7 +9,8 @@
         <link rel="stylesheet" href="{{ asset('bundles/tgw/css/bootstrap.min.css') }}" />
     </head>
     <body>
-
+        <div class="container-fluid">
+            <div class="row">
         {% if app.user %}
             {% include "tgwAdminBundle:Bloc:Bloc-logout.html.twig"  %}
             {% include "tgwAdminBundle:Bloc:Bloc-navbar.html.twig" %}
@@ -17,7 +18,8 @@
         {% endif %}
 
     {% block content %}
-
+            </div>
+        </div>
     {% endblock %}
 
     </body>

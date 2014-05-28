@@ -66,8 +66,7 @@ class AdminController extends Controller
         $article->setArticleTitre($request->get('titre'));
         $article->setArticleContenu($request->get('contenuArticle'));
         $article->setArticleAuteur($request->get('auteur'));
-       // $article->setArticleCategorie($request->get('categorie'));
-        $article->setArticleSynopsis("synopsys tout moisi ");
+        $article->setArticleSynopsis($request->get('synopsis'));
         $article->setArticlePublie(false);
         $article->setArticleDate(new \DateTime());
         $article->setArticleCategorie($categorie);
@@ -96,27 +95,34 @@ class AdminController extends Controller
         $lesArticles = $this->getDoctrine()->getRepository('tgwBlogBundle:Article')->findAll();
         return $this->render('tgwAdminBundle:Admin:showArticles.html.twig', array('titre' => $this->get("translator")->trans("admin.articles"),
                                                                                     'articles' => $lesArticles,
-                                                                                        'filArianne'=>$filArianne));
+                                                                                        'filArianne'=>$filArianne,));
     }
 
    public function editerAction($id)
    {
        $filArianne = $this->formatArianne($this->getRequest()->getRequestUri());
         $em = $this->getDoctrine()->getManager();
+        $categories = $em->getRepository('tgwBlogBundle:Categorie')->findAll();
         $article = $em->getRepository('tgwBlogBundle:Article')->find($id);
         return $this->render('tgwAdminBundle:Admin:redigerArticle.html.twig', array('titre' => $this->get("translator")->trans("admin.editer"),
-                                                                                        'article' => $article,
-                                                                                            'filArianne' => $filArianne));
+                                                                                    'article' => $article,
+                                                                                    'filArianne' => $filArianne,
+                                                                                    'categories' => $categories));
    }
 
     public function updateAction(Request $request)
     {
         $em = $this->getDoctrine()->getManager();
+        $categorie = new Categorie();
+        $cate = $em->getRepository('tgwBlogBundle:Categorie')->findBy(array('id'=>$request->get('categorie')));
+        $categorie->setTitre($cate[0]->getTitre());
+        $categorie->setId($cate[0]->getId());
         $article = $em->getRepository('tgwBlogBundle:Article')->find($request->get('id'));
         $article->setArticleTitre($request->get('titre'));
         $article->setArticleAuteur($request->get('auteur'));
-        $article->setArticleCategorie($request->get('categorie'));
+        $article->setArticleCategorie($categorie);
         $article->setArticleContenu($request->get('contenuArticle'));
+        $article->setArticleSynopsis($request->get('synopsis'));
         $em->flush();
 
         return $this->redirect($this->generateUrl('articles'));
