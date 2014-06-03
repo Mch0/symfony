@@ -158,3 +158,15 @@ text-decoration: none;
 form{
     color:black ;
 }
+
+/* Fin formulaire redaction article */
+
+/* les categories */
+
+table tr
+{
+    background-color: white;
+    color : #000000
+}
+
+/* fin les categorie */

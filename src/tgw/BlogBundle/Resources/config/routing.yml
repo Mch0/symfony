@@ -9,7 +9,7 @@ blog_article_show:
     defaults: { _controller: tgwBlogBundle:Article:show }
 
 blog_home:
-    path:     /home
+    path:     /
     defaults: { _controller: tgwBlogBundle:Accueil:index }
 
 blog_test:

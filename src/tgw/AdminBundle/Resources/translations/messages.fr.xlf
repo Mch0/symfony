@@ -22,6 +22,10 @@
                             <source>admin.editer</source>
                             <target>Administration - éditer un article</target>
                         </trans-unit>
+                         <trans-unit id="6">
+                            <source>admin.creer.categorie</source>
+                            <target>Administration - creer une catégorie</target>
+                        </trans-unit>
         </body>
     </file>
 </xliff>

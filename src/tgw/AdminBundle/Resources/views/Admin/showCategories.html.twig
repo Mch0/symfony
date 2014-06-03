@@ -1,0 +1,38 @@
+{% extends "tgwAdminBundle::theme.html.twig" %}
+
+
+{% block content %}
+
+
+        <div class="col-lg-10">
+            <h1>Les catégories</h1>
+        </div>
+
+        <a href="{{ path('tgw_admin_rediger_categorie') }}">Nouvelle catégorie</a>
+
+        <div class="col-lg-10">
+
+            <table class="table table-bordered table-striped" id="tab-categorie">
+                <thead>
+                <th>Categorie</th>
+                <th>Actions</th>
+                </thead>
+                <tbody>
+                {% for categorie in categories %}
+                    <tr>
+                        <td>{{categorie.getTitre}}</td>
+                        <td><div class="btn-group">
+                                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                                    Action <span class="caret"></span>
+                                </button>
+                                <ul class="dropdown-menu" role="menu">
+                                    <li><a href="#">Editer</a></li>
+                                    <li><a href="#">Supprimer</a></li>
+                                </ul>
+                            </div></td>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+{% endblock %}

@@ -8,7 +8,7 @@ use Symfony\Component\HttpFoundation\Session\Session;
 use Symfony\Component\Security\Core\SecurityContext;
 use tgw\BlogBundle\Entity\Article;
 use tgw\BlogBundle\Entity\Categorie;
-
+use tgw\AdminBundle\Helper\ArianeHelper;
 class AdminController extends Controller
 {
 
@@ -29,7 +29,8 @@ class AdminController extends Controller
             $error = $session->get(SecurityContext::AUTHENTICATION_ERROR);
             $session->remove(SecurityContext::AUTHENTICATION_ERROR);
         }
-        $filArianne = $this->formatArianne($this->getRequest()->getRequestUri());
+        $helperArian = ArianeHelper::getInstance();
+        $filArianne = $helperArian->formatArianne($this->getRequest()->getRequestUri());
         return $this->render('tgwAdminBundle:Admin:index.html.twig', array(
             // Valeur du précédent nom d'utilisateur entré par l'internaute
             'last_username' => $session->get(SecurityContext::LAST_USERNAME),
@@ -46,7 +47,8 @@ class AdminController extends Controller
     public function redigerAction()
     {
         $em = $this->getDoctrine()->getManager();
-        $filArianne = $this->formatArianne($this->getRequest()->getRequestUri());
+        $helperArian = ArianeHelper::getInstance();
+        $filArianne = $helperArian->formatArianne($this->getRequest()->getRequestUri());
         $categories = $em->getRepository('tgwBlogBundle:Categorie')->findAll();
         return $this->render('tgwAdminBundle:Admin:redigerArticle.html.twig', array('titre' => $this->get("translator")->trans("admin.rediger"),
                                                                                     'article' => null,
@@ -91,7 +93,8 @@ class AdminController extends Controller
 
     public function articlesAction()
     {
-        $filArianne = $this->formatArianne($this->getRequest()->getRequestUri());
+        $helperArian = ArianeHelper::getInstance();
+        $filArianne = $helperArian->formatArianne($this->getRequest()->getRequestUri());
         $lesArticles = $this->getDoctrine()->getRepository('tgwBlogBundle:Article')->findAll();
         return $this->render('tgwAdminBundle:Admin:showArticles.html.twig', array('titre' => $this->get("translator")->trans("admin.articles"),
                                                                                     'articles' => $lesArticles,
@@ -100,7 +103,8 @@ class AdminController extends Controller
 
    public function editerAction($id)
    {
-       $filArianne = $this->formatArianne($this->getRequest()->getRequestUri());
+        $helperArian = ArianeHelper::getInstance();
+        $filArianne = $helperArian->formatArianne($this->getRequest()->getRequestUri());
         $em = $this->getDoctrine()->getManager();
         $categories = $em->getRepository('tgwBlogBundle:Categorie')->findAll();
         $article = $em->getRepository('tgwBlogBundle:Article')->find($id);
@@ -136,25 +140,12 @@ class AdminController extends Controller
     }
 
 
-    public function formatArianne($uri)
-    {
-        $tabUri = array();
-        $tabUri = explode('/',$uri);
-        $formatedUri= array();
-
-        for($i=2; $i < count($tabUri) ; $i++)
-        {
-
-            $formatedUri[$i-1] = $tabUri[$i] ;
-        }
-
-        return $formatedUri;
-    }
 
     public function dashboardAction()
     {
 
-        $filArianne = $this->formatArianne($this->getRequest()->getRequestUri());
+        $helperArian = ArianeHelper::getInstance();
+        $filArianne = $helperArian->formatArianne($this->getRequest()->getRequestUri());
         $em = $this->getDoctrine()->getManager();
         $nbrTotalArticle = count($em->getRepository('tgwBlogBundle:Article')->findAll());
         $nbrArticlePublie = count($em->getRepository('tgwBlogBundle:Article')->findBy(array('articlePublie' => 1)));
@@ -188,5 +179,7 @@ class AdminController extends Controller
         $em->flush();
         return $this->redirect($this->generateUrl('articles'));
     }
+
+
 
 }

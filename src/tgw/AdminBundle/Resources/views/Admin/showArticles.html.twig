@@ -10,19 +10,50 @@
 
         <a href="{{ path('tgw_admin_rediger') }}">Nouvel article</a>
             <div class="col-lg-10">
+                <table class="table table-bordered table-stripped">
+                    <thead>
+                    <th>Titre</th>
+                    <th>Auteur</th>
+                    <th>Catégorie</th>
+                    <th>Date</th>
+                    <th>Etat</th>
+                    <th>Actions</th>
+                    </thead>
+                    <tbody>
             {% for article in articles %}
-                {{ article.getArticleTitre }} | {{ article.getArticleAuteur }} | {{ article.getArticleDate|date("d/m/Y H:i:s") }}
-                | <a href="{{ path('blog_article_show', { 'id': article.getId }) }}">voir</a>
-                | <a href="{{ path('tgw_admin_supprimer_article', { 'id': article.getId }) }}">supprimer</a>
-                | <a href="{{ path('tgw_admin_editer_article', {'id': article.getId}) }}">éditer</a>
-                {% if article.getArticlePublie == 0 %}
-                | <a href="{{ path('tgw_admin_publier_article', {'id': article.getId}) }}">Publier</a>
-                    {% else %}
-                    | <a href="{{ path('tgw_admin_depublier_article', {'id': article.getId}) }}">Dépublier</a>
-                {% endif %}
+                <tr>
+                    <td>{{ article.getArticleTitre }}</td>
+                    <td>{{ article.getArticleAuteur }}</td>
+                    <td>{{ article.getArticleCategorie.getTitre }}</td>
+                    <td>{{ article.getArticleDate|date("d/m/Y H:i:s") }}</td>
+                    {% if article.getArticlePublie == 0 %}
+                           <td class="danger"> Non publié </td>
+                        {% else %}
+                             <td class="success">Publié</td>
+                        {% endif %}</td>
+                    <td>
+                        <div class="btn-group">
+                            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                                Actions <span class="caret"></span>
+                            </button>
+                            <ul class="dropdown-menu" role="menu">
+                                <li><a href="{{ path('blog_article_show', { 'id': article.getId }) }}" target="_blank">voir</a></li>
+                                <li><a href="{{ path('tgw_admin_editer_article', {'id': article.getId}) }}">éditer</a></li>
+                                <li><a href="{{ path('tgw_admin_supprimer_article', { 'id': article.getId }) }}">supprimer</a></li>
+                                <li>{% if article.getArticlePublie == 0 %}
+                                        <a href="{{ path('tgw_admin_publier_article', {'id': article.getId}) }}">Publier</a>
+                                    {% else %}
+                                        <a href="{{ path('tgw_admin_depublier_article', {'id': article.getId}) }}">Dépublier</a>
+                                    {% endif %}</li>
+                            </ul>
+                        </div>
+                    </td>
 
-                </br>
+
             {% endfor %}
+                </tr>
+                    </tbody>
+                </table>
             </div>
     </div>
 {% endblock %}

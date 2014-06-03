@@ -16,6 +16,10 @@ articles:
     path:   /admin/dashboard/articles
     defaults: { _controller: tgwAdminBundle:Admin:articles}
 
+categories:
+    path:   /admin/dashboard/categories
+    defaults: { _controller: tgwAdminBundle:Categorie:categories}
+
 tgw_admin_creer_article:
     path:   /admin/dashboard/article/creer
     defaults: { _controller: tgwAdminBundle:Admin:creer}
@@ -40,8 +44,19 @@ tgw_admin_depublier_article:
     path:   /admin/dashboard/article/depublie
     defaults: { _controller: tgwAdminBundle:Admin:depublie}
 
+tgw_admin_rediger_categorie:
+    path:   /admin/dashboard/categorie/rediger
+    defaults: { _controller: tgwAdminBundle:Categorie:rediger}
+
+tgw_admin_creer_categorie:
+    path:   /admin/dashboard/categorie/creer
+    defaults: { _controller: tgwAdminBundle:Categorie:creer}
+
 login_check:
     pattern:   /login_check
 
 logout:
     pattern:   /logout
+
+
+
