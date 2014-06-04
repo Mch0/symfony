@@ -23,7 +23,7 @@
             {% for article in articles %}
                 <tr>
                     <td>{{ article.getArticleTitre }}</td>
-                    <td>{{ article.getArticleAuteur }}</td>
+                    <td>{{ article.getArticleAuteur.getNom }}</td>
                     <td>{{ article.getArticleCategorie.getTitre }}</td>
                     <td>{{ article.getArticleDate|date("d/m/Y H:i:s") }}</td>
                     {% if article.getArticlePublie == 0 %}

@@ -6,6 +6,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Session\Session;
 use Symfony\Component\Security\Core\SecurityContext;
+use tgw\BlogBundle\Entity\Auteur;
 use tgw\BlogBundle\Entity\Article;
 use tgw\BlogBundle\Entity\Categorie;
 use tgw\AdminBundle\Helper\ArianeHelper;
@@ -59,12 +60,23 @@ class AdminController extends Controller
 
     public function creerAction(Request $request)
     {
+
         $em = $this->getDoctrine()->getManager();
+        $auteur = new Auteur();
         $article = new Article();
         $categorie = new Categorie();
+
+
+
+        $auteur->setNom("Scoté");
+        $auteur->setPrenom("Arnaud");
+        $auteur->setEmail("arnaud.scote@gmail.com");
+        $auteur->setSignature("signature arnaud");
+
         $cate = $em->getRepository('tgwBlogBundle:Categorie')->findBy(array('id'=>$request->get('categorie')));
         $categorie->setTitre($cate[0]->getTitre());
         $categorie->setId($cate[0]->getId());
+
         $article->setArticleTitre($request->get('titre'));
         $article->setArticleContenu($request->get('contenuArticle'));
         $article->setArticleAuteur($request->get('auteur'));
@@ -72,6 +84,8 @@ class AdminController extends Controller
         $article->setArticlePublie(false);
         $article->setArticleDate(new \DateTime());
         $article->setArticleCategorie($categorie);
+
+        $article->setArticleAuteur($auteur);
 
         $DoctrineService = $this->getDoctrine()->getManager();
 

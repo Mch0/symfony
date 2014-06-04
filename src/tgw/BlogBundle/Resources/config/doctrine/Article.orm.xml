@@ -8,7 +8,7 @@
     <field name="articleDate" type="datetime" column="article_date"/>
     <field name="articleSynopsis" type="string" column="article_synopsis" length="255"/>
     <field name="articleContenu" type="text" column="article_contenu"/>
-    <field name="articleAuteur" type="string" column="article_auteur" length="100"/>
+    <field name="articleAuteur" type="object" column="article_auteur"/>
     <field name="articlePublie" type="boolean" column="article_publie"/>
     <field name="articleCategorie" type="object" column="article_categorie"/>
   </entity>
