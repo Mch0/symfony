@@ -1,0 +1,90 @@
+/* Footer */
+
+
+.footer
+{
+    background-color: #242B33;
+    color : #c1c3c6;
+    font-size: 13px;
+
+}
+
+.footer  ul
+{
+    list-style: none;
+}
+
+.footer .social ul li
+{
+    float: left;
+}
+
+/* Fin Footer */
+
+/* Header */
+
+.navbar-default , #menu-mobile, .content-menu
+{
+    background-color:#242B33 ;
+    margin-bottom: 20px;
+    max-height: 35px;
+
+}
+
+#menu
+{
+
+    height: 35px;
+    background-color: #242B33  ;
+    padding: 0;
+    margin-bottom: 20px!important;
+}
+#menu ul li:hover
+{
+    border-bottom: 5px solid #0066cc;
+}
+#menu ul li a{
+    text-decoration: none;
+    color: #fff!important;
+    text-transform: uppercase;
+}
+
+#menu .navbar-default .navbar-nav>.open>a,.dropdown-menu,
+.navbar-default .navbar-nav>.open>a:hover,
+.navbar-default .navbar-nav>.open>a:focus
+{
+    background-color: #242B33!important;
+}
+
+.dropdown-menu a:hover
+{
+    background-color: #242B33!important;
+}
+
+.dropdown-menu>li {
+    border-right: 0px!important;
+}
+
+#menu ul li{
+    font-size: 15px;
+    list-style: none;
+    float: left;
+    letter-spacing: 1px;
+    height: 50px;
+    padding-left: 30px;
+    padding-right: 30px;
+    padding-bottom: 13px;
+    border-right: 1px solid white;
+}
+/* fin header */
+
+/* Carousel */
+
+#carousel .col-lg-12
+{
+    padding-left: 0;
+    padding-right: 0;
+
+}
+
+/* Fin Carousel */

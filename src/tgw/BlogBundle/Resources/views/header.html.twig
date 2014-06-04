@@ -1,24 +1,151 @@
 <html>
-    <head>
-        <title>{{ titre }}</title>
-        <link rel="stylesheet" href="{{ asset('bundles/tgw/css/bootstrap.min.css') }}"/>
-        <link rel="icon" type="image/x-icon" href="{{ asset('bundles/tgw/image/favicon.ico') }}" />
-    </head>
-    <body>
-    <script>
-        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-                m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+<head>
+    <title>{{ titre }}</title>
+    <link rel="stylesheet" href="{{ asset('bundles/tgw/css/bootstrap.min.css') }}"/>
+    <link rel="stylesheet" href="{{ asset('bundles/tgw/css/blog.css') }}"/>
+    <link rel="icon" type="image/x-icon" href="{{ asset('bundles/tgw/image/favicon.ico') }}"/>
+</head>
+<body>
+<script>
+    (function (i, s, o, g, r, a, m) {
+        i['GoogleAnalyticsObject'] = r;
+        i[r] = i[r] || function () {
+            (i[r].q = i[r].q || []).push(arguments)
+        }, i[r].l = 1 * new Date();
+        a = s.createElement(o),
+                m = s.getElementsByTagName(o)[0];
+        a.async = 1;
+        a.src = g;
+        m.parentNode.insertBefore(a, m)
+    })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
 
-        ga('create', 'UA-42309916-1', 'thegeekway.fr');
-        ga('send', 'pageview');
+    ga('create', 'UA-42309916-1', 'thegeekway.fr');
+    ga('send', 'pageview');
 
-    </script>
-    <div style="height: 270px;background: url({{ asset('bundles/tgw/image/cup.png') }});background-repeat: no-repeat"></div>
-    <div style="height: 50px;width: 900px;background-color: #313131;color: white;text-align: center">THEME GLOBAL</div>
+</script>
+<div class="header" id="header">
+    <nav class="navbar navbar-default navbar-inverse ">
+        <div class="container">
+
+            <form class="navbar-form navbar-right" role="search">
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="Search">
+                </div>
+                <button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-search"></span></button>
+            </form>
+        </div>
+    </nav>
+    <div class="container">
+        <div class="row">
+            <h1 style="font-size: 62px">TheGeekWay</h1>
+        </div>
+    </div>
+</div>
+    <!-- MENU -->
+    <div class="container" id="menu">
+        <nav class="navbar navbar-default" role="navigation">
+            <div class="container-fluid content-menu" >
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#menu-mobile">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                </div>
+
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse" id="menu-mobile">
+                    <ul class="nav navbar-nav">
+                        <li><a href="{{ path('blog_home') }}">Acceuil</a></li>
+                        <li><a href="{{ path('blog_articles', { 'page': 1 }) }}"> ARTICLES </a></li>
+                        <li>
+                            <a href="#" class="dropdown-toggle menu-contact"  data-toggle="dropdown">PORTFOLIO <b class="caret"></b></a>
+                            <ul class="dropdown-menu menu-contact">
+                                <li><a href="#">Arnaud</a></li>
+                                <li><a href="#">Nadège</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="#" class="dropdown-toggle menu-contact"  data-toggle="dropdown">CONTACT <b class="caret"></b></a>
+                            <ul class="dropdown-menu menu-contact">
+                                <li><a href="#">Arnaud</a></li>
+                                <li><a href="#">Nadège</a></li>
+                            </ul>
+                        </li>
+
+
+                    </ul>
+                </div><!-- /.navbar-collapse -->
+            </div><!-- /.container-fluid -->
+        </nav>
+    </div>
+<!-- fin MENU -->
+
+<div class="container">
     {% block content %}
 
     {% endblock %}
-    </body>
+</div>
+    <!-- FOOTER -->
+<footer>
+    <div class="footer" id="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3 col-footer ">
+                    <h5>TheGeekWay c'est quoi ?</h5>
+                    <hr/>
+                    <p>C'est un site d'information traitant plusieurs thèmes. Comme l'informatique, que ce soit le
+                        développement ou le côté matériel</p>
+                </div>
+                <div class="col-lg-3 col-footer article">
+                    <h5>Les derniers articles</h5>
+                    <hr/>
+                    <ul>
+                        <li>Article 1</li>
+                        <li>Article 2</li>
+                        <li>Article 3</li>
+                        <li>Article 4</li>
+                        <li>Article 5</li>
+                    </ul>
+                </div>
+                <div class="col-lg-3  col-footer contact">
+                    <h5>Contact</h5>
+                    <hr/>
+                    <address>
+                        <strong>TheGeekWay Compagnie</strong></br>
+                        12 rue saint Aloise </br>
+                        Strasbourg 67200 </br>
+                        +33 603501223
+                    </address>
+                </div>
+                <div class="col-lg-3 col-footer social">
+                    <h5>Nous suivres</h5>
+                    <hr/>
+                    <ul>
+                        <li><a hre="#"><img src="{{ asset('bundles/tgw/image/icons/social/32/facebook_32.png') }}"/></a>
+                        </li>
+                        <li><a hre="#"><img src="{{ asset('bundles/tgw/image/icons/social/32/twitter_32.png') }}"/></a>
+                        </li>
+                        <li><a hre="#"><img src="{{ asset('bundles/tgw/image/icons/social/32/linkedin_32.png') }}"/></a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="row">
+                <hr/>
+                <p class="text-center"><span class="pull-left">Copyright &copy 2014 TheGeekWay</span>
+                    Développé par : Arnaud Scoté & Nadège Perez
+                    <span class="pull-right">&#149;<a href="#">lien1</a> &#149;<a href="#">lien2</a> &#149;<a href="#">lien3</a></span>
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+    <!-- fin FOOTER -->
+<!-- script -->
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js" type="text/javascript"></script>
+<script src="{{ asset('bundles/tgw/js/bootstrap.min.js') }}"></script>
+</body>
 </html>
