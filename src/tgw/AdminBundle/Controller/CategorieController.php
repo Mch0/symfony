@@ -41,7 +41,7 @@ class CategorieController extends Controller
         $DoctrineService->persist($categorie);
         $DoctrineService->flush();
 
-        return $this->redirect($this->generateUrl('dashboard'));
+        return $this->redirect($this->generateUrl('categories'));
     }
 
     public function editerAction($id)
