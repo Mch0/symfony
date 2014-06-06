@@ -1,0 +1,45 @@
+{% extends "tgwAdminBundle::theme.html.twig" %}
+
+
+{% block content %}
+
+    <div class="container-fluid">
+        <div class="col-lg-10">
+            <h1>Les auteurs</h1>
+        </div>
+
+        <div class="col-lg-10">
+            <table class="table table-bordered table-responsive table-stripped">
+                <thead>
+                <th>Nom</th>
+                <th>Prénom</th>
+                <th>Email</th>
+                <th>Actions</th>
+                </thead>
+                <tbody>
+                {% for auteur in auteurs %}
+                <tr>
+                    <td>{{ auteur.getNom }}</td>
+                    <td>{{ auteur.getPrenom }}</td>
+                    <td>{{ auteur.getEmail }}</td>
+                    <td>
+                        <div class="btn-group">
+                            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                                Actions <span class="caret"></span>
+                            </button>
+                            <ul class="dropdown-menu" role="menu">
+                                <li><a href="{{ path('tgw_admin_editer_auteur', {'id': auteur.getId}) }}">éditer</a></li>
+                                <li><a href="{{ path('tgw_admin_suppimer_auteur', { 'id': auteur.getId }) }}">supprimer</a></li>
+                            </ul>
+                        </div>
+                    </td>
+
+
+                    {% endfor %}
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+{% endblock %}

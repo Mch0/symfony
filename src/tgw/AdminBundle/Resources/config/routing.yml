@@ -52,6 +52,35 @@ tgw_admin_creer_categorie:
     path:   /admin/dashboard/categorie/creer
     defaults: { _controller: tgwAdminBundle:Categorie:creer}
 
+tgw_admin_index_auteurs:
+    path:   /admin/dashboard/auteurs
+    defaults: { _controller: tgwAdminBundle:Auteur:index}
+
+tgw_admin_rediger_auteur:
+    path:   /admin/dashboard/auteur/rediger
+    defaults: { _controller: tgwAdminBundle:Auteur:rediger}
+
+tgw_admin_creer_auteur:
+    path:   /admin/dashboard/auteur/creer
+    defaults: { _controller: tgwAdminBundle:Auteur:creer}
+
+tgw_admin_editer_auteur:
+    path:   /admin/dashboard/auteur/editer/{id}
+    defaults: { _controller: tgwAdminBundle:Auteur:editer}
+
+tgw_admin_update_auteur:
+    path:   /admin/dashboard/auteur/update
+    defaults: { _controller: tgwAdminBundle:Auteur:update}
+
+tgw_admin_suppimer_auteur:
+    path:   /admin/dashboard/auteur/supprimer/{id}
+
+tgw_admin_filemanager:
+    path:   /admin/dashboard/manager
+    defaults: { _controller: tgwAdminBundle:FileManager:index}
+
+
+
 login_check:
     pattern:   /login_check
 

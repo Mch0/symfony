@@ -50,11 +50,16 @@ class AdminController extends Controller
         $em = $this->getDoctrine()->getManager();
         $helperArian = ArianeHelper::getInstance();
         $filArianne = $helperArian->formatArianne($this->getRequest()->getRequestUri());
+
         $categories = $em->getRepository('tgwBlogBundle:Categorie')->findAll();
+
+        $auteurs = $em->getRepository('tgwBlogBundle:Auteur')->findAll();
+
         return $this->render('tgwAdminBundle:Admin:redigerArticle.html.twig', array('titre' => $this->get("translator")->trans("admin.rediger"),
                                                                                     'article' => null,
                                                                                     'filArianne' => $filArianne,
-                                                                                    'categories' => $categories));
+                                                                                    'categories' => $categories,
+                                                                                    'auteurs' => $auteurs));
     }
 
 
@@ -66,7 +71,7 @@ class AdminController extends Controller
         $article = new Article();
         $categorie = new Categorie();
 
-
+        $auteur = $em->getRepository('tgwBlogBundle:Auteur')->findOneBy(array("id"=>$request->get('auteur')));
 
         $auteur->setNom("Scoté");
         $auteur->setPrenom("Arnaud");
@@ -79,7 +84,7 @@ class AdminController extends Controller
 
         $article->setArticleTitre($request->get('titre'));
         $article->setArticleContenu($request->get('contenuArticle'));
-        $article->setArticleAuteur($request->get('auteur'));
+        $article->setArticleAuteur($auteur);
         $article->setArticleSynopsis($request->get('synopsis'));
         $article->setArticlePublie(false);
         $article->setArticleDate(new \DateTime());
@@ -120,12 +125,17 @@ class AdminController extends Controller
         $helperArian = ArianeHelper::getInstance();
         $filArianne = $helperArian->formatArianne($this->getRequest()->getRequestUri());
         $em = $this->getDoctrine()->getManager();
+
         $categories = $em->getRepository('tgwBlogBundle:Categorie')->findAll();
+
+        $auteurs = $em->getRepository('tgwBlogBundle:Auteur')->findAll();
+
         $article = $em->getRepository('tgwBlogBundle:Article')->find($id);
         return $this->render('tgwAdminBundle:Admin:redigerArticle.html.twig', array('titre' => $this->get("translator")->trans("admin.editer"),
                                                                                     'article' => $article,
                                                                                     'filArianne' => $filArianne,
-                                                                                    'categories' => $categories));
+                                                                                    'categories' => $categories,
+                                                                                    'auteurs' => $auteurs));
    }
 
     public function updateAction(Request $request)

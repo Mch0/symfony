@@ -44,6 +44,16 @@ class CategorieController extends Controller
         return $this->redirect($this->generateUrl('dashboard'));
     }
 
+    public function updateAction(Request $request)
+    {
+
+    }
+
+    public function deleteAcion($id)
+    {
+
+    }
+
     public function categoriesAction()
     {
         $helperArian = ArianeHelper::getInstance();
