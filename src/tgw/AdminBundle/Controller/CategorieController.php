@@ -29,7 +29,7 @@ class CategorieController extends Controller
 
         return $this->render('tgwAdminBundle:Categorie:redigerCategorie.html.twig', array('titre' => $this->get("translator")->trans("admin.rediger"),
                                                                                                                     'filArianne' => $filArianne,
-                                                                                                                    'categories' => null));
+                                                                                                                    'categorie' => null));
     }
 
     public function creerAction(Request $request)
