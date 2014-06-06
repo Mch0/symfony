@@ -60,6 +60,11 @@ tgw_admin_editer_categorie:
     path:   /admin/dashboard/categorie/editer/{id}
     defaults: { _controller: tgwAdminBundle:Categorie:editer}
 
+
+tgw_admin_supprimer_categorie:
+    path:   /admin/dashboard/categorie/supprimer/{id}
+    defaults: { _controller: tgwAdminBundle:Categorie:supprimer}
+
 tgw_admin_index_auteurs:
     path:   /admin/dashboard/auteurs
     defaults: { _controller: tgwAdminBundle:Auteur:index}

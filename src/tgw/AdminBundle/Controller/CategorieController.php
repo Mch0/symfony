@@ -70,8 +70,14 @@ class CategorieController extends Controller
 
     }
 
-    public function deleteAcion($id)
+    public function supprimerAction($id)
     {
+
+        $em = $this->getDoctrine()->getManager();
+        $categorie = $em->getRepository('tgwBlogBundle:Categorie')->find($id);
+        $em->remove($categorie);
+        $em->flush();
+        return $this->redirect($this->generateUrl('categories'));
 
     }
 

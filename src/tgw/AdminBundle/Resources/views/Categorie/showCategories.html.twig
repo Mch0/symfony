@@ -27,7 +27,7 @@
                                 </button>
                                 <ul class="dropdown-menu" role="menu">
                                     <li><a href="{{ path('tgw_admin_editer_categorie', {'id':categorie.getId}) }}">Editer</a></li>
-                                    <li><a href="#">Supprimer</a></li>
+                                    <li><a href="{{ path('tgw_admin_supprimer_categorie',{'id':categorie.getId}) }}">Supprimer</a></li>
                                 </ul>
                             </div></td>
                 {% endfor %}
