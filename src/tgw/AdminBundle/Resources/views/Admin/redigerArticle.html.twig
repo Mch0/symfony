@@ -106,12 +106,17 @@
     </div>
 </form>
     </div>
-
+    <div id="elfinder"></div>
 
 {% endif %}
+    <link rel="stylesheet" type="text/css" media="screen" href="{{ asset('bundles/elfinder/css/elfinder.min.css') }}">
+    <link rel="stylesheet" type="text/css" media="screen" href="{{ asset('bundles/elfinder/css/theme.css') }}">
+
+    <!-- elFinder JS (REQUIRED) -->
+    <script type="text/javascript" src="{{ asset('bundles/elfinder/js/elfinder.min.js') }}"></script>
     <script src="{{ asset('bundles/tgw/js/ckeditor/ckeditor.js') }}" type="text/javascript"></script>
 <script type="text/javascript">
-    CKEDITOR.replace('contenuArticle');
+    CKEDITOR.replace('contenuArticle',{filebrowserBrowseUrl:'../../../../bundles/elfinder/elfinder.html'});
     CKEDITOR.config.width = '100%';
     CKEDITOR.config.height = '60%';
     //On met la hauteur de la sidebar a jour
@@ -123,4 +128,5 @@
     $('#sidebar').css('height',bodyHeight+"px");
 
 </script>
+
 {% endblock %}

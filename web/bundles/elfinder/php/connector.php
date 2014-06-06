@@ -32,7 +32,7 @@ $opts = array(
 		array(
 			'driver'        => 'LocalFileSystem',   // driver for accessing file system (REQUIRED)
 			'path'          => '../../upload/',         // path to files (REQUIRED)
-			'URL'           => '../../../bundles/upload/', // URL to files (REQUIRED)
+			'URL'           => '../../../../web/bundles/upload/', // URL to files (REQUIRED)
 			'accessControl' => 'access'             // disable and hide dot starting files (OPTIONAL)
 		)
 	)
