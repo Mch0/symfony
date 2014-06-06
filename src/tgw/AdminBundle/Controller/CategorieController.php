@@ -26,10 +26,10 @@ class CategorieController extends Controller
         $em = $this->getDoctrine()->getManager();
         $helperArian = ArianeHelper::getInstance();
         $filArianne = $helperArian->formatArianne($this->getRequest()->getRequestUri());
-        $categories = $em->getRepository('tgwBlogBundle:Categorie')->findAll();
-        return $this->render('tgwAdminBundle:Admin:redigerCategorie.html.twig', array('titre' => $this->get("translator")->trans("admin.rediger"),
+
+        return $this->render('tgwAdminBundle:Categorie:redigerCategorie.html.twig', array('titre' => $this->get("translator")->trans("admin.rediger"),
                                                                                                                     'filArianne' => $filArianne,
-                                                                                                                    'categories' => $categories));
+                                                                                                                    'categories' => null));
     }
 
     public function creerAction(Request $request)
@@ -44,8 +44,29 @@ class CategorieController extends Controller
         return $this->redirect($this->generateUrl('dashboard'));
     }
 
+    public function editerAction($id)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $helperArian = ArianeHelper::getInstance();
+        $filArianne = $helperArian->formatArianne($this->getRequest()->getRequestUri());
+        $categorie = $em->getRepository('tgwBlogBundle:Categorie')->find($id);
+
+       return $this->render('tgwAdminBundle:Categorie:redigerCategorie.html.twig',array('titre' => $this->get('translator')->trans('admin.editer.categorie'),
+                                                        'filArianne' => $filArianne,
+                                                        'categorie' => $categorie));
+
+    }
+
     public function updateAction(Request $request)
     {
+        $categorie = new Categorie();
+        $em = $this->getDoctrine()->getManager();
+        $categorie = $em->getRepository('tgwBlogBundle:Categorie')->find($request->get('id'));
+        $categorie->setTitre($request->get('titre'));
+
+        $em->flush();
+
+        return $this->redirect($this->generateUrl('categories'));
 
     }
 
@@ -61,7 +82,7 @@ class CategorieController extends Controller
         $DoctrineService = $this->getDoctrine()->getManager()->getRepository('tgwBlogBundle:Categorie');
         $categories = $DoctrineService->findAll();
 
-        return $this->render('tgwAdminBundle:Admin:showCategories.html.twig',array('titre' =>$this->get('translator')->trans('admin.creer.categorie'),
+        return $this->render('tgwAdminBundle:Categorie:showCategories.html.twig',array('titre' =>$this->get('translator')->trans('admin.categories'),
                                      'categories' => $categories,
                                         'filArianne' => $filArianne));
 

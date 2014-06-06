@@ -52,6 +52,14 @@ tgw_admin_creer_categorie:
     path:   /admin/dashboard/categorie/creer
     defaults: { _controller: tgwAdminBundle:Categorie:creer}
 
+tgw_admin_update_categorie:
+    path:   /admin/dashboard/categorie/update
+    defaults: { _controller: tgwAdminBundle:Categorie:update}
+
+tgw_admin_editer_categorie:
+    path:   /admin/dashboard/categorie/editer/{id}
+    defaults: { _controller: tgwAdminBundle:Categorie:editer}
+
 tgw_admin_index_auteurs:
     path:   /admin/dashboard/auteurs
     defaults: { _controller: tgwAdminBundle:Auteur:index}

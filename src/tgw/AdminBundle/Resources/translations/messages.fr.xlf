@@ -3,33 +3,49 @@
     <file source-language="en" datatype="plaintext" original="file.ext">
         <body>
             <trans-unit id="1">
-                            <source>admin.acceuil</source>
-                            <target>Administration</target>
-                        </trans-unit>
-                        <trans-unit id="2">
-                            <source>admin.dashboard</source>
-                            <target>Dashboard</target>
-                        </trans-unit>
-                        <trans-unit id="3">
-                            <source>admin.articles</source>
-                            <target>Administration - les articles</target>
-                        </trans-unit>
-                        <trans-unit id="4">
-                            <source>admin.rediger</source>
-                            <target>Administration - rédiger article</target>
-                        </trans-unit>
-                        <trans-unit id="5">
-                            <source>admin.editer</source>
-                            <target>Administration - éditer un article</target>
-                        </trans-unit>
-                         <trans-unit id="6">
-                            <source>admin.creer.categorie</source>
-                            <target>Administration - creer une catégorie</target>
-                        </trans-unit>
-                        <trans-unit id="7">
-                        <source>admin.auteurs</source>
-                            <target>Administration - les auteurs</target>
-                        </trans-unit>
+                <source>admin.acceuil</source>
+                <target>Administration</target>
+            </trans-unit>
+            <trans-unit id="2">
+                <source>admin.dashboard</source>
+                <target>Dashboard</target>
+            </trans-unit>
+            <trans-unit id="3">
+                <source>admin.articles</source>
+                <target>Administration - les articles</target>
+            </trans-unit>
+            <trans-unit id="4">
+                <source>admin.rediger</source>
+                <target>Administration - rédiger article</target>
+            </trans-unit>
+            <trans-unit id="5">
+                <source>admin.editer</source>
+                <target>Administration - éditer un article</target>
+            </trans-unit>
+             <trans-unit id="6">
+                <source>admin.creer.categorie</source>
+                <target>Administration - creer une catégorie</target>
+            </trans-unit>
+            <trans-unit id="7">
+                <source>admin.auteurs</source>
+                <target>Administration - les auteurs</target>
+            </trans-unit>
+            <trans-unit id="8">
+                <source>admin.creer.auteur</source>
+                <target>Administration - créer un auteur</target>
+            </trans-unit>
+            <trans-unit id="9">
+                <source>admin.editer.auteur</source>
+                <target>Administration - éditer un auteur</target>
+            </trans-unit>
+            <trans-unit id="10">
+                <source>admin.categories</source>
+                <target>Administration - les catégories</target>
+            </trans-unit>
+            <trans-unit id="11">
+                <source>admin.editer.categorie</source>
+            <target>Administration - éditer une catégorie</target>
+            </trans-unit>
         </body>
     </file>
 </xliff>
