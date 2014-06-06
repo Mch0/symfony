@@ -87,6 +87,7 @@ tgw_admin_update_auteur:
 
 tgw_admin_suppimer_auteur:
     path:   /admin/dashboard/auteur/supprimer/{id}
+    defaults: { _controller: tgwAdminBundle:Auteur:supprimer}
 
 tgw_admin_filemanager:
     path:   /admin/dashboard/manager
