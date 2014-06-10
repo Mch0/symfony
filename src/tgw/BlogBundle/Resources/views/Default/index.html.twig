@@ -38,16 +38,31 @@
         </div>
         </div>
     <!-- find Carousel -->
-    <div class="header">
-        <h1>Hello!</h1>
-        <hr/>
+    <div class="articles">
+        {% for article in articles  %}
+        <div class="row">
+            <div class="col-lg-10">
+                <div class="post col-lg-10">
+                    <h2>{{ article.getArticleTitre() }}</h2>
+                    <p class="post-content-meta">
+                        <span class="post-tags">
+                            <a href="#">
+                                <span class="label label-info">{{ article.getArticleCategorie().getTitre() }}</span>
+                            </a>
+                        </span>
+                        <span class="post-author"> // <i class="icon-user"></i> <a href="#">{{ article.getArticleAuteur().getPrenom() }}</a></span>
+                        <span class="post-date"> // <i class="icon-calendar"></i>{{ article.getArticleDate()|date("d M \\a\\ H\\hm")  }}</span>
+                    </p>
+                    <div class="col-lg-3">
+                        <img class="img-thumbnail" src="{{ asset('bundles/tgw/image/imgnewbase.png') }}" />
+                    </div>
+                    <p>{{ article.getArticleSynopsis() }}</p>
+                    <a href="{{ path('blog_article_show', { 'id': article.getId }) }}">Read more »</a>
+                </div>
+            </div>
+        </div>
+        <hr class="alt"/>
+        {% endfor %}
     </div>
-    <p> Bonjour,</p>
-    <p>Tout d'abord bienvenue sur TheeGeeWay.</p>
-    <p>TheGeekWay est née d'une passion qui brûler en moi depuis maintenant fort longtemps,</p><p> et après plusieurs année
-    a me dire "Bon allez on va s'exprimmer sur toile" je me suis lancé dans le projet de crée mon blog.</p>
-    <p>Et à l'heure actuel c'est vous qui en voyez le résultat.</p>
-    <p>Dans tous les cas je vous souhaite une bonne visite sur notre site.</p>
-    <p>Si vous avez des suggestions, critiques, ou toutes autres questions le formulaires de contact est là</p>
 
 {% endblock %}
