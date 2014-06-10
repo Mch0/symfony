@@ -6,6 +6,7 @@
     </id>
     <field name="articleTitre" type="string" column="article_titre" length="255"/>
     <field name="articleDate" type="datetime" column="article_date"/>
+    <field name="articleVignette" type="string" column="articleVignette" length="255" />
     <field name="articleSynopsis" type="string" column="article_synopsis" length="255"/>
     <field name="articleContenu" type="text" column="article_contenu"/>
     <field name="articleAuteur" type="object" column="article_auteur"/>

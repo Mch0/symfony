@@ -49,6 +49,10 @@ class Article
      */
     private $articleCategorie;
 
+    /**
+     * @var string
+     */
+    private $articleVignette;
 
     /**
      * Get id
@@ -81,6 +85,18 @@ class Article
     public function getArticleTitre()
     {
         return $this->articleTitre;
+    }
+
+
+    public function getArticleVignette()
+    {
+        return $this->articleVignette;
+    }
+
+    public function setArticleVignette($articleVignette)
+    {
+        $this->articleVignette = $articleVignette;
+        return $this;
     }
 
     /**

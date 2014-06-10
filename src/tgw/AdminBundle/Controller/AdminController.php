@@ -88,6 +88,7 @@ class AdminController extends Controller
         $article->setArticleSynopsis($request->get('synopsis'));
         $article->setArticlePublie(false);
         $article->setArticleDate(new \DateTime());
+        $article->setArticleVignette($request->get('vignette'));
         $article->setArticleCategorie($categorie);
 
         $article->setArticleAuteur($auteur);
