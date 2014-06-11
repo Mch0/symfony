@@ -56,9 +56,10 @@ class ArticleController extends Controller
 
         $DoctrineService = $this->getDoctrine()->getManager();
         $lesArticles = $DoctrineService->getRepository('tgwBlogBundle:Article')->findBy(array('articlePublie'=>1));
-
+        $lesCategories = $DoctrineService->getRepository('tgwBlogBundle:Categorie')->findAll();
         return $this->render('tgwBlogBundle:Default:listeArticles.html.twig', array('titre' => "Les articles",
-            'articles' => $lesArticles));
+            'articles' => $lesArticles,
+            'categories' => $lesCategories));
     }
 
 

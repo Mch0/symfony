@@ -5,15 +5,9 @@
 <div class="row">
     <div id="main">
     <ol id="filters">
-        <li data-filter="Santé">Santé</li>
-        <li data-filter="Culture">Culture</li>
-        <li data-filter="london">London</li>
-        <li data-filter="paris">Paris</li>
-        <li data-filter="berlin">Berlin</li>
-        <li data-filter="sport">Sport</li>
-        <li data-filter="fashion">Fashion</li>
-        <li data-filter="video">Video</li>
-        <li data-filter="art">Art</li>
+        {% for categorie in categories %}
+        <li data-filter="{{ categorie.getTitre }}">{{ categorie.getTitre }}</li>
+        {% endfor %}
     </ol>
         <ul id="tiles">
             <div id="loader">
