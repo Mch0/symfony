@@ -144,11 +144,14 @@ class AdminController extends Controller
         $em = $this->getDoctrine()->getManager();
         $categorie = new Categorie();
         $cate = $em->getRepository('tgwBlogBundle:Categorie')->findBy(array('id'=>$request->get('categorie')));
+
+
+        $auteur = $em->getRepository('tgwBlogBundle:Auteur')->findOneBy(array('id' => $request->get('auteur')));
         $categorie->setTitre($cate[0]->getTitre());
         $categorie->setId($cate[0]->getId());
         $article = $em->getRepository('tgwBlogBundle:Article')->find($request->get('id'));
         $article->setArticleTitre($request->get('titre'));
-        $article->setArticleAuteur($request->get('auteur'));
+        $article->setArticleAuteur($auteur);
         $article->setArticleCategorie($categorie);
         $article->setArticleContenu($request->get('contenuArticle'));
         $article->setArticleSynopsis($request->get('synopsis'));

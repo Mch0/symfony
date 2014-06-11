@@ -2,13 +2,32 @@
 
 
 {% block content %}
-
-
-       {{ article.getArticleTitre }}
-        </br>
-    </br>
-    {{ article.getArticleContenu|raw }}
-    </br>
-    </br>
-    {{ article.getArticleAuteur.getPrenom }} |  {{ article.getArticleCategorie.getTitre }}  | {{ article.getArticleDate|date('Y-m-d H:i:s') }}
+<article>
+    <div class="row">
+        <div class="col-lg-10">
+            <div class="post col-lg-10">
+                <h2>{{ article.getArticleTitre }}</h2>
+                <p class="post-content-meta">
+                        <span class="post-tags">
+                            <a href="#">
+                                <span class="label label-info">{{ article.getArticleCategorie().getTitre() }}</span>
+                            </a>
+                        </span>
+                    <span class="post-author"> // <i class="icon-user"></i> <a href="#">{{ article.getArticleAuteur().getPrenom() }}</a></span>
+                    <span class="post-date"> // <i class="icon-calendar"></i>{{ article.getArticleDate()|date("d M \\a\\ H\\hm")  }}</span>
+                </p>
+                <hr/>
+                <p>{{ article.getArticleContenu|raw }}</p>
+            </div>
+        </div>
+    </div>
+    <hr/>
+    <div class="row">
+        <div class="col-lg-10">
+            <div class="post col-lg-10">
+                <p>{{ article.getArticleAuteur.getSignature()|raw }}</p>
+            </div>
+        </div>
+    </div>
+</article>
 {% endblock %}

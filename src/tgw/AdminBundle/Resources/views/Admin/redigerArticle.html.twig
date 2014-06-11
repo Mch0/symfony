@@ -19,9 +19,17 @@
         </div>
     </div>
     <div class="form-group">
-        <label for="auteur" class="col-lg-1 control-label">Auteur </label>
+        <label for="auteur" class="control-label col-lg-1">Auteur </label>
         <div class="col-lg-4">
-            <input type="text" name="auteur" class="form-control" id="auteur" value="{{ article.getArticleAuteur.getPrenom }}"/>
+            <select class="form-control" name="auteur" id="auteur">
+                {% for auteur in auteurs %}
+                    {% if auteur == article.getArticleAuteur %}
+                    <option value="{{ auteur.getId }}" selected>{{ auteur.getPrenom }}</option>
+                {% else %}
+                        <option value="{{ auteur.getId }}">{{ auteur.getPrenom }}</option>
+                {% endif %}
+                {% endfor %}
+            </select>
         </div>
     </div>
     <div class="form-group">
@@ -128,9 +136,7 @@
     //On met la hauteur de la sidebar a jour
     var synopsisHeight = $('#synopsis').height();
     var bodyHeight = document.body.scrollHeight + 90 + synopsisHeight + synopsisHeight;
-    console.log(document.body.scrollHeight);
-    console.log(synopsisHeight);
-    console.log(bodyHeight);
+
     $('#sidebar').css('height',bodyHeight+"px");
 
 </script>
