@@ -155,6 +155,7 @@ class AdminController extends Controller
         $article->setArticleCategorie($categorie);
         $article->setArticleContenu($request->get('contenuArticle'));
         $article->setArticleSynopsis($request->get('synopsis'));
+        $article->setArticleVignette($request->get('vignette'));
         $em->flush();
 
         return $this->redirect($this->generateUrl('articles'));

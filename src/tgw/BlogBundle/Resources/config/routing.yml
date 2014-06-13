@@ -19,3 +19,11 @@ blog_test:
 blog_article_remove:
     path:     /admin/article/supprimer/{id}
     defaults: { _controller:tgwBlogBundle:Article:supprimer}
+
+blog_contact:
+    path:   /contact/{name}
+    defaults: { _controller:tgwBlogBundle:Contact:index}
+
+blog_contact_send:
+    path: /contact/send/{name}
+    defaults: { _controller:tgwBlogBundle:Contact:send}

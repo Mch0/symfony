@@ -1,0 +1,41 @@
+{% extends "tgwBlogBundle::header.html.twig" %}
+
+
+{% block content %}
+<div class="col-lg-10">
+    <div class="row">
+<h1>Nous contacter</h1>
+        <hr/>
+
+    </div>
+    <div class="row">
+<form class="form-horizontal" action="{{ path('blog_contact_send',{'name': name}) }}" role="form">
+    <div class="form-group">
+        <label for="email" class="col-lg-2 control-label">Votre email </label>
+        <div class="col-lg-10">
+            <input type="email" required="true" placeholder="Votre adresse email"  class="form-control" name="email" id="email" />
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="sujet" class="col-lg-2 control-label">Sujet </label>
+        <div class="col-lg-10">
+            <input type="text" maxlength="255" required="true" placeholder="Sujet de votre email"  class="form-control" name="sujet" id="sujet" />
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="message" class="col-lg-2 control-label">Message </label>
+        <div class="col-lg-10">
+            <textarea class="form-control" required="true" placeholder="Votre message" style="height: 250px"></textarea>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-lg-6 col-lg-offset-4">
+            <input type="submit" class="btn btn-primary form-control" />
+        </div>
+    </div>
+
+</form>
+    </div>
+</div>
+{% endblock %}
