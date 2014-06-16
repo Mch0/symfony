@@ -27,3 +27,7 @@ blog_contact:
 blog_contact_send:
     path: /contact/send/{name}
     defaults: { _controller:tgwBlogBundle:Contact:send}
+
+blog_rechercher:
+    path: /rechercher
+    defaults: { _controller:tgwBlogBundle:Recherche:rechercher}
