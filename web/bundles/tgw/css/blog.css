@@ -102,6 +102,12 @@ body
 
 /* Fin Carousel */
 
+
+.post h2 a
+{
+    text-decoration: none!important;
+    color: inherit!important;
+}
 .post
 {
     margin: 0 30px 5px 30px;
@@ -227,6 +233,8 @@ body
     font-size: 12px;
     line-height: 16px;
     margin: 7px 0 0 7px;
+    overflow :auto;
+    max-width: 295px;
 }
 
 

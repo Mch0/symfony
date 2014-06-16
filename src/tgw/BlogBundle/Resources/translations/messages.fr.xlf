@@ -18,6 +18,10 @@
                 <source>Contact</source>
                 <target>Blog - %name%</target>
             </trans-unit>
+            <trans-unit id="5">
+                <source>recherche</source>
+                <target>Blog - résultat de recherche pour %mot-clef%</target>
+            </trans-unit>
         </body>
     </file>
 </xliff>
