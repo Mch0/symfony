@@ -140,7 +140,10 @@
     <script type="text/javascript" src="{{ asset('bundles/elfinder/js/elfinder.min.js') }}"></script>
     <script src="{{ asset('bundles/tgw/js/ckeditor/ckeditor.js') }}" type="text/javascript"></script>
 <script type="text/javascript">
-    CKEDITOR.replace('contenuArticle',{filebrowserBrowseUrl:'../../../../bundles/elfinder/elfinder.html'});
+    CKEDITOR.replace('contenuArticle',{filebrowserBrowseUrl:'../../../../bundles/elfinder/elfinder.html',
+        filebrowserImageBrowseUrl : '../../../../bundles/elfinder/elfinder.html?mode=image',
+        filebrowserImageBrowseUrl : '../../../../bundles/elfinder/elfinder.html?mode=flash',
+        filebrowserImageBrowseUrl : '../../../../bundles/elfinder/elfinder.html?mode=file'});
     CKEDITOR.config.width = '100%';
     CKEDITOR.config.height = '60%';
     //On met la hauteur de la sidebar a jour

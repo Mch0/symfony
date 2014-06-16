@@ -29,14 +29,18 @@
                 return (match && match.length > 1) ? match[1] : '' ;
             }
 
-            $().ready(function() {
+            $(document).ready(function() {
                 var funcNum = getUrlParam('CKEditorFuncNum');
                 var mode = getUrlParam('mode');
-
+                console.log(mode);
                 var elf = $('#elfinder').elfinder({
                     url : 'php/connector.php?mode=' + mode,  // connector URL (REQUIRED)
+
+
                     getFileCallback : function(file) {
-                        window.opener.CKEDITOR.tools.callFunction(funcNum, file.url);
+
+                        //$('#cke_114_textInput',window.opener.document).val(file);
+                        window.opener.CKEDITOR.tools.callFunction(funcNum, file);
                         window.close();
                     },
                     resizable: false
