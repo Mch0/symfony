@@ -9,7 +9,19 @@
     <field name="articleVignette" type="string" column="articleVignette" length="255" />
     <field name="articleSynopsis" type="string" column="article_synopsis" length="255"/>
     <field name="articleContenu" type="text" column="article_contenu"/>
-    <field name="articleAuteur" type="object" column="article_auteur"/>
+   <!-- <field name="articleAuteur" type="Auteur" column="article_auteur"/>-->
+
+      <many-to-one field="articleAuteur"
+                   target-entity="Auteur"
+                   inversed-by="Article"
+              >
+          <join-column
+                  name="articleAuteur"
+                  referenced-column-name="id"
+                  />
+      </many-to-one>
+
+
     <field name="articlePublie" type="boolean" column="article_publie"/>
     <field name="articleCategorie" type="object" column="article_categorie"/>
   </entity>

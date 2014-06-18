@@ -65,7 +65,6 @@ class AdminController extends Controller
 
     public function creerAction(Request $request)
     {
-
         $em = $this->getDoctrine()->getManager();
         $auteur = new Auteur();
         $article = new Article();
@@ -94,7 +93,7 @@ class AdminController extends Controller
         $article->setArticleAuteur($auteur);
 
         $DoctrineService = $this->getDoctrine()->getManager();
-
+        $DoctrineService->persist($auteur);
         $DoctrineService->persist($article);
         $DoctrineService->flush();
 

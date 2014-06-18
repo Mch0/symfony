@@ -29,7 +29,7 @@ class ContactController extends Controller
 
         $sujet = $request->get('sujet');
         $message = $request->get('message');
-        $header = "From: ". $request->get('email');
+        $header = "From: noreply@thegeekway.fr";
 
         mail($adresse,$sujet,$message,$header);
 

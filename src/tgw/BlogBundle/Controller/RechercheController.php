@@ -13,7 +13,7 @@ class RechercheController extends Controller
         public function rechercherAction(Request $request)
         {
             $motClef = $request->get('mot-clef');
-            $em = $this->getDoctrine()->getEntityManager();
+            $em = $this->getDoctrine()->getManager();
             $query = $em->createQuery("select a FROM tgwBlogBundle:Article a WHERE a.articleContenu like :motClef
             or a.articleTitre like :motClef")->setParameter('motClef',"%".$motClef."%");
             $articles = $query->getResult();

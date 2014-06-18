@@ -35,7 +35,8 @@ class Article
     private $articleContenu;
 
     /**
-     * @var string
+     * @ORM\ManyToOne(targetEntity="Auteur", inversedBy="Article")
+     * @ORM\JoinColumn(name="articleAuteur", referencedColumnName="id")
      */
     private $articleAuteur;
 
