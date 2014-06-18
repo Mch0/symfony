@@ -46,7 +46,8 @@ class Article
     private $articlePublie;
 
     /**
-     * @var \stdClass
+     * @ORM\ManyToOne(targetEntity="Categorie", inversedBy="Article")
+     * @ORM\JoinColumn(name="articleCategorie", referencedColumnName="id")
      */
     private $articleCategorie;
 

@@ -95,6 +95,7 @@ class AdminController extends Controller
         $DoctrineService = $this->getDoctrine()->getManager();
         $DoctrineService->persist($auteur);
         $DoctrineService->persist($article);
+        $DoctrineService->persist($categorie);
         $DoctrineService->flush();
 
         return $this->redirect($this->generateUrl('articles'));
@@ -142,12 +143,9 @@ class AdminController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
         $categorie = new Categorie();
-        $cate = $em->getRepository('tgwBlogBundle:Categorie')->findBy(array('id'=>$request->get('categorie')));
-
-
+        $categorie = $em->getRepository('tgwBlogBundle:Categorie')->findOneBy(array('id'=>$request->get('categorie')));
         $auteur = $em->getRepository('tgwBlogBundle:Auteur')->findOneBy(array('id' => $request->get('auteur')));
-        $categorie->setTitre($cate[0]->getTitre());
-        $categorie->setId($cate[0]->getId());
+
         $article = $em->getRepository('tgwBlogBundle:Article')->find($request->get('id'));
         $article->setArticleTitre($request->get('titre'));
         $article->setArticleAuteur($auteur);

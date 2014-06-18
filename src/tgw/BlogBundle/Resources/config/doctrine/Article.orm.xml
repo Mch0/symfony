@@ -23,6 +23,16 @@
 
 
     <field name="articlePublie" type="boolean" column="article_publie"/>
-    <field name="articleCategorie" type="object" column="article_categorie"/>
+    <!--<field name="articleCategorie" type="object" column="article_categorie"/> -->
+
+      <many-to-one field="articleCategorie"
+                   target-entity="Categorie"
+                   inversed-by="Article"
+              >
+          <join-column
+                  name="articleCategorie"
+                  referenced-column-name="id"
+                  />
+      </many-to-one>
   </entity>
 </doctrine-mapping>
