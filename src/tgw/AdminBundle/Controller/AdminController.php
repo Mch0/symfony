@@ -77,9 +77,8 @@ class AdminController extends Controller
         $auteur->setEmail("arnaud.scote@gmail.com");
         $auteur->setSignature("signature arnaud");
 
-        $cate = $em->getRepository('tgwBlogBundle:Categorie')->findBy(array('id'=>$request->get('categorie')));
-        $categorie->setTitre($cate[0]->getTitre());
-        $categorie->setId($cate[0]->getId());
+        $categorie = $em->getRepository('tgwBlogBundle:Categorie')->findOneBy(array('id'=>$request->get('categorie')));
+
 
         $article->setArticleTitre($request->get('titre'));
         $article->setArticleContenu($request->get('contenuArticle'));
