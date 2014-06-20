@@ -94,5 +94,27 @@
                             </table>
                         </div>
                     </div>
-                </div>
+
+                        <div id="stats-box" class="col-lg-6">
+                            <div  class="col-lg-12 title">Analytics</div>
+                            <div class="col-lg-12 browser">
+                        {% for key, pourcentage in pourcentageNavigateur  %}
+                            <div style="display: inline-block ">
+                                <img src="{{ asset('bundles/tgw/image/browser/browser-'~key~'.png') }}">
+                                <span>{{ pourcentage }}%</span>
+                            </div>
+                        {% endfor %}
+                            </div>
+                            <div class="col-lg-12">
+                        <ul style="display: inline-block" class="statistiques">
+                            <li>Page vues : {{ statistiques['pageviews'] }}</li>
+                            <li>Visiteurs unique : {{ statistiques['visitors'] }}</li>
+                            <li>Visites : {{ statistiques['visits'] }}</li>
+                            <li>Pages vue par visite : {{ statistiques['pageviewsPerVisit']|number_format(2,'.',',') }}</li>
+                            <li>% de nouvelle visite : {{ statistiques['percentNewVisits']|number_format(2,'.',',') }}%</li>
+                        </ul>
+                            </div>
+                        </div>
+                    </div>
+
     {% endblock %}

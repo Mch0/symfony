@@ -75,6 +75,25 @@ body{
     background-color:#333333;
     width: 100%
 }
+
+#stats-box .statistiques
+{
+    color: #5d5d5d!important;
+    margin-top: 30px;
+}
+
+#stats-box .browser
+{
+    color: #5d5d5d!important;
+    margin-top: 35px;
+}
+
+#stats-box
+{
+    margin-top: 50px;
+    height: 320px;
+}
+
 #right-box table
 {
     color: #5d5d5d!important;
@@ -95,7 +114,7 @@ body{
 {
     font-size : 12px;
 }
-#left-box, #right-box
+#left-box, #right-box, #stats-box
 {
     border:solid #333333 2px;
     padding-left: 0;

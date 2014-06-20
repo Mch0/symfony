@@ -3,7 +3,7 @@
 
 {% block content %}
     {% include "tgwBlogBundle:Bloc:Bloc-caroussel.html.twig"  %}
-    <div class="articles">
+    <div class="articles col-lg-10">
         {% for article in articles  %}
         <div class="row">
             <div class="col-lg-10">
@@ -35,5 +35,7 @@
         <hr class="alt"/>
         {% endfor %}
     </div>
+
+    {% include "tgwBlogBundle:Bloc:Bloc-donate.html.twig" %}
 
 {% endblock %}

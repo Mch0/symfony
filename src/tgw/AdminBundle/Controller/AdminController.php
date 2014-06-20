@@ -6,6 +6,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Session\Session;
 use Symfony\Component\Security\Core\SecurityContext;
+use tgw\BlogBundle\Helper\gapi;
 use tgw\BlogBundle\Entity\Auteur;
 use tgw\BlogBundle\Entity\Article;
 use tgw\BlogBundle\Entity\Categorie;
@@ -174,16 +175,42 @@ class AdminController extends Controller
         $em = $this->getDoctrine()->getManager();
         $nbrTotalArticle = count($em->getRepository('tgwBlogBundle:Article')->findAll());
         $nbrArticlePublie = count($em->getRepository('tgwBlogBundle:Article')->findBy(array('articlePublie' => 1)));
-        $nbrCategories = 10;
+
         $nbrArticleNonPublie = count($em->getRepository('tgwBlogBundle:Article')->findBy(array('articlePublie' => 0)));
         $nbrCategories = count($em->getRepository('tgwBlogBundle:Categorie')->findAll());
+
+
+
+        $ga = new \tgw\AdminBundle\Helper\gapi(ga_email,ga_password);
+        $filter = 'browser == Chrome || browser == Firefox || browser == Internet Explorer || browser == Safari || browser == Opera';
+        //On fait notre requete sur l'API Google Analytics
+        $ga->requestReportData(ga_profile_id,array('browser'),array('pageviews','visits'),'-visits',$filter);
+        //On compte le nombre totale de page vues pour tout les navigateurs
+        $totalPageVue = 0;
+        foreach($ga->getResults() as $pagesviews)
+        {
+            $totalPageVue += $pagesviews->getPageviews();
+        }
+        $pourcentageParNavigateur = array();
+        foreach($ga->getResults() as $browser)
+        {
+            $percentForCurrentBrowser = ($browser->getPageviews()*100/$totalPageVue);
+            $pourcentageParNavigateur["$browser"] = round($percentForCurrentBrowser);
+        }
+
+
+        $statsGen = $ga->requestReportData(ga_profile_id, NULL,array('visitors','visits','pageviews','pageviewsPerVisit','avgtimeOnSite','visitBounceRate','percentNewVisits'),NULL,NULL,'2012-11-30',(date('Y-m-d',time())));
+        $statsGen = $statsGen[0]->getMetrics();
+
         return $this->render('tgwAdminBundle:Admin:administration.html.twig', array('titre' => $this->get("translator")->trans("admin.dashboard"),
                                                                                      'user' => $this->getUser(),
                                                                                         'filArianne' => $filArianne,
                                                                                         'nbrTotalArticle' => $nbrTotalArticle,
                                                                                         'nbrArticlePublie' => $nbrArticlePublie,
                                                                                         'nbrCategories' => $nbrCategories,
-                                                                                        'nbrArticleNonPublie' =>$nbrArticleNonPublie));
+                                                                                        'nbrArticleNonPublie' =>$nbrArticleNonPublie,
+                                                                                        'statistiques' => $statsGen,
+                                                                                        'pourcentageNavigateur' => $pourcentageParNavigateur));
     }
 
 

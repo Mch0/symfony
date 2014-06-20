@@ -291,3 +291,12 @@ header p {
     margin: 0 auto;
     background-image: url('images/loader.gif');
 }
+
+
+/** button donate **/
+
+#donate
+{
+    margin-top: 100px;
+
+}
