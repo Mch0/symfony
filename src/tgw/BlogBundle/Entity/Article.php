@@ -6,6 +6,8 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * Article
+ * 
+ * @ORM\Entity(repositoryClass="tgw\BlogBundle\Entity\ArticleRepository")
  */
 class Article
 {
@@ -33,6 +35,13 @@ class Article
      * @var string
      */
     private $articleContenu;
+    
+    
+    /**
+     *
+     * @var integer 
+     */
+    private $articleNbVue;
 
     /**
      * @ORM\ManyToOne(targetEntity="Auteur", inversedBy="Article")
@@ -88,13 +97,47 @@ class Article
     {
         return $this->articleTitre;
     }
-
-
+    
+    /**
+     * Get article views
+     * 
+     * @return integer
+     */
+    public function getArticleNbVue()
+    {
+        return $this->articleNbVue;
+    }
+    
+    /*
+     * Set article views
+     * 
+     * @param Integer $articleNbVue
+     * 
+     *@return Article 
+     */
+    public function setArticleNbVue($articleNbVue)
+    {
+        $this->articleNbVue = $articleNbVue;
+        return $this; 
+    }
+    
+    
+    /**
+     * Get vignette path
+     * 
+     * @return string
+     */
     public function getArticleVignette()
     {
         return $this->articleVignette;
     }
-
+    
+    
+    /**
+     * 
+     * @param string $articleVignette
+     * @return \tgw\BlogBundle\Entity\Article
+     */
     public function setArticleVignette($articleVignette)
     {
         $this->articleVignette = $articleVignette;
@@ -237,5 +280,12 @@ class Article
     public function getArticleCategorie()
     {
         return $this->articleCategorie;
+    }
+    
+    public function incrementeVue()
+    {
+        $nbVue = $this->getArticleNbVue();
+        $this->setArticleNbVue($nbVue + 1);
+        return $this->articleNbVue;
     }
 }
