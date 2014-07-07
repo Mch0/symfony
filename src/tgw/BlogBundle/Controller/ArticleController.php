@@ -4,6 +4,7 @@ namespace tgw\BlogBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use tgw\BlogBundle\Entity\Article;
+use tgw\BlogBundle\Entity\ArticleRepository;
 
 class ArticleController extends Controller
 {
@@ -41,6 +42,8 @@ class ArticleController extends Controller
 
         $DoctrineService = $this->getDoctrine()->getManager();
         $article = $DoctrineService->getRepository('tgwBlogBundle:Article')->find($id);
+        $article->incrementeVue();
+        $DoctrineService->flush();
         return $this->render('tgwBlogBundle:Default:showArticle.html.twig' , array('titre' => $this->get('translator')->trans('blog.voir.article',array('%titre%' => $article->getArticleTitre())),
                                                                             'article' => $article ));
     }
