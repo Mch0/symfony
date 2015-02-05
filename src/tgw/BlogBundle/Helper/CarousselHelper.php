@@ -26,7 +26,7 @@ class CarousselHelper {
 
     public function getSlide()
     {
-            if( $dir = opendir('../../symfony/web/bundles/upload/slider'))
+            if( $dir = opendir('bundles/upload/slider'))
             {
                 while(($file = readdir($dir)) !== false)
                 {
