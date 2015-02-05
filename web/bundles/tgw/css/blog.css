@@ -32,7 +32,6 @@ body
 }
 
 /* Fin Footer */
-
 /* Header */
 
 .navbar-default , #menu-mobile, .content-menu
@@ -41,6 +40,17 @@ body
     margin-bottom: 20px;
     max-height: 35px;
 
+}
+#header ins {
+	margin-left : 9%!important;
+}
+#content article ins
+ {
+margin-top : 12%!important;
+}
+.pub-horizontal-large
+{
+padding-left : 12%;
 }
 
 #menu
