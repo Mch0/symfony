@@ -3,6 +3,9 @@
 /app/logs/*
 /vendor/
 /app/config/parameters.yml
-.idea/*
+/.idea/
 composer.lock
 /web/bundles/upload
+/web/bundles/acmedemo/
+/web/bundle/framework/
+/web/bundles/sensiodistribution/
