@@ -7,5 +7,5 @@
 composer.lock
 /web/bundles/upload
 /web/bundles/acmedemo/
-/web/bundle/framework/
+/web/bundles/framework/
 /web/bundles/sensiodistribution/
