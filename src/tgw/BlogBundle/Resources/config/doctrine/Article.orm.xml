@@ -5,6 +5,8 @@
       <generator strategy="AUTO"/>
     </id>
     <field name="articleTitre" type="string" column="article_titre" length="255"/>
+      <field name="articleSlug" type="string" column="article_slug" length="255"/>
+      <field name="articleNbVue" type="integer" column="article_nbvue"/>
     <field name="articleDate" type="datetime" column="article_date"/>
     <field name="articleVignette" type="string" column="articleVignette" length="255" />
     <field name="articleSynopsis" type="string" column="article_synopsis" length="255"/>

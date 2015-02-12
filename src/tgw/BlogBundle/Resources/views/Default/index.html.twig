@@ -8,7 +8,8 @@
         <div class="row">
             <div class="col-lg-10">
                 <div class="post col-lg-10">
-                    <h2><a href="{{ path('blog_article_show', { 'id': article.getId }) }}">{{ article.getArticleTitre() }}</a></h2>
+                    {{ article.getArticleSlug }}
+                    <h2><a href="{{ path('blog_article_show', { 'id': article.getId ,'slug': article.getArticleSlug}) }}">{{ article.getArticleTitre() }}</a></h2>
                     <p class="post-content-meta">
                         <span class="post-tags">
                             <a href="#">
@@ -19,7 +20,7 @@
                         <span class="post-date"> // <i class="icon-calendar"></i>{{ article.getArticleDate()|date("d M \\a\\ H\\hm")  }}</span>
                     </p>
                     <div class="col-lg-3">
-                        <a href="{{ path('blog_article_show', { 'id': article.getId }) }}">
+                        <a href="{{ path('blog_article_show', { 'id': article.getId , 'slug': article.getArticleSlug}) }}">
                         {% if article.getArticleVignette() == null %}
                             <img class="img-thumbnail" src="{{ asset('bundles/tgw/image/imgnewbase.png') }}" />
                         {% else %}
@@ -28,7 +29,7 @@
                         </a>
                     </div>
                     <p>{{ article.getArticleSynopsis() }}</p>
-                    <a href="{{ path('blog_article_show', { 'id': article.getId }) }}">Lire la suite »</a>
+                    <a href="{{ path('blog_article_show', { 'id': article.getId ,'slug': article.getArticleSlug}) }}">Lire la suite »</a>
                 </div>
             </div>
         </div>

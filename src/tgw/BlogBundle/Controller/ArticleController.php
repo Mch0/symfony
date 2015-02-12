@@ -37,7 +37,7 @@ class ArticleController extends Controller
      * @param $id
      * @return array
      */
-    public function showAction($id)
+    public function showAction($id,$slug)
     {
 
         $DoctrineService = $this->getDoctrine()->getManager();
@@ -60,6 +60,7 @@ class ArticleController extends Controller
         $DoctrineService = $this->getDoctrine()->getManager();
         $lesArticles = $DoctrineService->getRepository('tgwBlogBundle:Article')->findBy(array('articlePublie'=>1));
         $lesCategories = $DoctrineService->getRepository('tgwBlogBundle:Categorie')->findAll();
+
         return $this->render('tgwBlogBundle:Default:listeArticles.html.twig', array('titre' => "Les articles",
             'articles' => $lesArticles,
             'categories' => $lesCategories));

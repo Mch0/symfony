@@ -5,7 +5,7 @@ blog_articles:
         page: \d+
 
 blog_article_show:
-    path:   /article/{id}
+    path:   /article/{id}/{slug}
     defaults: { _controller: tgwBlogBundle:Article:show }
 
 blog_home:

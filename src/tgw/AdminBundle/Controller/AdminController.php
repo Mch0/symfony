@@ -73,11 +73,6 @@ class AdminController extends Controller
 
         $auteur = $em->getRepository('tgwBlogBundle:Auteur')->findOneBy(array("id"=>$request->get('auteur')));
 
-        $auteur->setNom("Scoté");
-        $auteur->setPrenom("Arnaud");
-        $auteur->setEmail("arnaud.scote@gmail.com");
-        $auteur->setSignature("signature arnaud");
-
         $categorie = $em->getRepository('tgwBlogBundle:Categorie')->findOneBy(array('id'=>$request->get('categorie')));
 
 
@@ -89,8 +84,8 @@ class AdminController extends Controller
         $article->setArticleDate(new \DateTime());
         $article->setArticleVignette($request->get('vignette'));
         $article->setArticleCategorie($categorie);
-
         $article->setArticleAuteur($auteur);
+		$article->setArticleSlug(str_replace(' ','-',$article->getArticleTitre()));
 
         $DoctrineService = $this->getDoctrine()->getManager();
         $DoctrineService->persist($auteur);

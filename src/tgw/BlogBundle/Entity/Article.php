@@ -35,7 +35,28 @@ class Article
      * @var string
      */
     private $articleContenu;
-    
+
+
+	/**
+	 * @var string
+	 */
+	private $articleSlug;
+
+	/**
+	 * @return mixed
+	 */
+	public function getArticleSlug()
+	{
+		return $this->articleSlug;
+	}
+
+	/**
+	 * @param mixed $articleSlug
+	 */
+	public function setArticleSlug($articleSlug)
+	{
+		$this->articleSlug = $articleSlug;
+	}
     
     /**
      *
@@ -281,11 +302,12 @@ class Article
     {
         return $this->articleCategorie;
     }
-    
+
     public function incrementeVue()
     {
         $nbVue = $this->getArticleNbVue();
         $this->setArticleNbVue($nbVue + 1);
         return $this->articleNbVue;
     }
+
 }
